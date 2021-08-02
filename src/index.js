@@ -4,7 +4,8 @@ import AppRouter from './components/AppRouter';
 import reportWebVitals from './reportWebVitals';
 import './components/utils/icons';
 import './styles/reset.css';
-import './styles/colors.css';
+import './styles/style.css';
+
 
 ReactDOM.render(
   <React.StrictMode>

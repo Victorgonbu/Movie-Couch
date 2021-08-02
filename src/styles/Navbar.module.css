@@ -1,7 +1,10 @@
 
 .navbar {
-    composes: appPadding from './App.module.css';
+    padding: 0 1em;
     justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    border: 1px solid red;
 }
 
 .dropdownButton {
