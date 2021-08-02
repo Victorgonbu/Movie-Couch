@@ -1,0 +1,10 @@
+
+.navbar {
+    composes: appPadding from './App.module.css';
+    justify-content: space-between;
+}
+
+.dropdownButton {
+    background-color: var(--white);
+    border: 1px solid var(--white);
+}

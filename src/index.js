@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import AppRouter from './components/AppRouter';
 import reportWebVitals from './reportWebVitals';
 import './components/utils/icons';
+import './styles/reset.css';
+import './styles/colors.css';
 
 ReactDOM.render(
   <React.StrictMode>
