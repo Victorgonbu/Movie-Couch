@@ -1,5 +1,21 @@
+.dropdownButton {
+    background-color: var(--white);
+    border: 1px solid var(--white);
+}
+
 .dropdownMenu {
     position: absolute;
-    left: 0;
+    left: -100%;
     top: 10vh;
+    border: 1px solid red;
+    transition: 150ms cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.active {
+    left: 0;
+}
+
+.dropdownItem {
+    padding: .5em;
+    
 }
