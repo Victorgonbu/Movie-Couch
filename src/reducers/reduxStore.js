@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import genresReducer from './genre';
 import thunk from 'redux-thunk';
 

@@ -1,27 +1,13 @@
 import { dropdownMenu } from '../../styles/Dropdown.module.css';
-import axios from '../../axios';
-import { useEffect, useState } from 'react';
-import { genresURL } from '../../API';
+import { useEffect} from 'react';
+import { connect } from 'react-redux';
+import { fetchGenresList } from '../../actions';
 
-const DropdownMenu = () => {
-    const [genres, setGenres] = useState(null);
-
+const DropdownMenu = (props) => {
+    const { genres, fetchGenres } = props;
     useEffect(() => {
-        if(!genres) {
-            const request = axios.get(genresURL);
-            request
-            .then((response) => {
-                console.log(response)
-                setGenres(response.data.genres)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        }
-
-        console.log(genres)
-
-    }, [genres])
+        fetchGenres();
+    }, [fetchGenres])
 
     return(
         <ul className={dropdownMenu}>
@@ -38,4 +24,16 @@ const DropdownMenu = () => {
     )
 };
 
-export default DropdownMenu;
+const mapStateToProps = (state) => {
+    return {
+        genres: state.genres.list
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchGenres: () => {dispatch(fetchGenresList)}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);

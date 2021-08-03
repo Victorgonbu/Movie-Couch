@@ -1,11 +1,11 @@
-const genresReducer = (state, action) => {
+const genresReducer = (state = {}, action) => {
     const {type, payload} = action;
     
     switch(type) {
-        case 'SET_GENRES':
-          return payload
+        case 'SET_GENRES_LIST':
+          return {...state, list: payload}
         default:
-        break;
+            return state;
     }
 }
 
