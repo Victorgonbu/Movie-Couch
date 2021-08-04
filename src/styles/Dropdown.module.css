@@ -21,5 +21,11 @@
 
 .dropdownItem {
     padding: .5em;
-    
+    background-color: var(--black);
+    border: none;
+    color: white;
+}
+
+.activeFilter {
+    color: var(--red);
 }

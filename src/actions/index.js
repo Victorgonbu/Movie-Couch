@@ -3,6 +3,7 @@ import { genresURL, movieURL } from "../API";
 
 const SET_GENRES_LIST = 'SET_GENRES_LIST';
 const SET_CURRENT_CONTENT = 'SET_CURRENT_CONTENT';
+const SET_CURRENT_FILTER = 'SET_CURRENT_FILTER';
 
 const setGenresList = (list) => {
     return {type: SET_GENRES_LIST, payload: list}
@@ -44,7 +45,12 @@ const fetchContent = (filter) => {
     }
 };
 
+const setCurrentFilter = (filter) => {
+    return { type: SET_CURRENT_FILTER, payload: filter }
+};
+
 export {
     fetchGenresList,
-    fetchContent
+    fetchContent,
+    setCurrentFilter,
 }
