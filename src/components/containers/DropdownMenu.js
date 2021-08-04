@@ -13,7 +13,6 @@ const DropdownMenu = React.forwardRef((props, ref) => {
     }, [fetchGenres])
 
     const handleDropdown = () => {
-        console.log('mamagubov')
         dropdownRef.current.classList.toggle(active);
     };
 

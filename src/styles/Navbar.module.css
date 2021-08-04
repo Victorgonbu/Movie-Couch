@@ -7,7 +7,13 @@
     align-items: center;
     max-width: 100%;
     height: 10vh;
-    border: 1px solid red;
-    background-color: var(--white);
+    color: var(--white);
+    background-color: var(--black);
     z-index: 2;
+    font-family: 'Monoton', sans-serif;
+}
+
+.brand {
+    color: var(--red);
+    font-size: 1.4em;
 }

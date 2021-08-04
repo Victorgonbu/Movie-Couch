@@ -1,9 +1,13 @@
 :root {
     --white: #fff;
+    --black: #262626;
+    --red: #DA0068;
+    --shadow: rgba(0, 0, 0, 0.8);
 }
 
 #root {
+    background-color: var(--black);
     width: 100vw;
     position: relative;
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Manrope', sans-serif;
 }

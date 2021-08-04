@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { fetchContent } from '../../actions/index';
 import {imagesURL} from '../../API';
 import ReactStars from "react-rating-stars-component";
-import { list, listItem, title, poster, itemDetails, home } from '../../styles/Home.module.css';
+import { list, listItem, title, poster, itemDetails, home, starRate, date, rating, moreDetails } from '../../styles/Home.module.css';
+import { formatDate } from '../utils/index';
 
 const Home = (props) => {
     const {currentFilter, fetchContent, content} = props;
@@ -23,15 +24,20 @@ const Home = (props) => {
                         
                         <img className={poster} alt="poster" src={`${imagesURL}${item.poster_path}`} />
                         <div className={itemDetails}>
-                            <span className={title}>{item.title}</span>
+                            <p className={title}>{item.title}</p>
+                            <p className={date}>{formatDate(item.release_date)}</p>
+                            <button className={moreDetails}>More Details</button>
                             <ReactStars
+                                classNames={starRate}
                                 value={item.vote_average/2}
                                 isHalf
+                                edit={false}
                                 count={5}
                                 onChange={() => {}}
                                 size={24}
-                                activeColor="#ffd700"
+                                activeColor="var(--white)"
                             />
+                            <span className={rating}>{item.vote_average}/10</span>
                         </div>
                     </li>)
                 })

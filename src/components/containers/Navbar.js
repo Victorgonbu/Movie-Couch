@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { flex } from '../../styles/App.module.css';
-import { navbar} from '../../styles/Navbar.module.css';
+import { navbar, brand} from '../../styles/Navbar.module.css';
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
            
             <DropdownMenu />
 
-            <div className="brand">
+            <div className={brand}>
                 Movie Couch
             </div>
 

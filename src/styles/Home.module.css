@@ -11,13 +11,12 @@
 
 .listItem {
     position: relative;
-    border: 1px solid red;
 }
 
 .listItem::before {
     position: absolute;
     content: '';
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--shadow);
     top: 0;
     left: 0;
     right: 0;
@@ -30,9 +29,44 @@
 }
 
 .itemDetails {
+    visibility: hidden;
+    text-align: center;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    color: var(--white);
+    font-weight: 800;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.listItem:hover .itemDetails {
+    visibility: visible;
+}
+
+.title {
+    padding-bottom: .3em;
+}
+
+.date {
+    font-weight: 100;
+}
+
+.moreDetails {
+    background-color: transparent;
+    color: var(--blue);
+    border: none;
+    border: 1px solid white;
+    margin: 1em 0;
+    padding: .5em;
+}
+
+.rating {
+    font-weight: 100;
+}
+
+.starRate {
+    margin-top: .5em;
+    width: max-content;
 }
 
 .poster {

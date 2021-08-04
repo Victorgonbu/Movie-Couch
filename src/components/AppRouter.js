@@ -9,7 +9,7 @@ function AppRouter() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ['Kanit:light, regular, bold']
+        families: ['Manrope:light, medium, bold', 'Monoton']
       }
     });
   }, []);
