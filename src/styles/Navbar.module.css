@@ -18,3 +18,34 @@
     color: var(--red);
     font-size: 1.4em;
 }
+
+.searchIcon {
+    font-size: 1.2em;
+}
+
+.searchBox {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    white-space: nowrap;
+    padding-bottom: .5em;
+
+}
+
+.searchBar {
+    width: 60%;
+    max-width: 400px;
+    padding: .5em;
+    border: 1px solid var(--white);
+
+}
+
+.searchButton {
+    font-family: 'Manrope', sans-serif;
+    color: var(--white);
+    border: 1px solid var(--red);
+    border-left: none;
+    background-color: var(--black);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
