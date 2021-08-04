@@ -70,7 +70,7 @@ const DropdownMenu = React.forwardRef((props, ref) => {
                         <button 
                         className={dropdownItem} 
                         onClick={handleFilterChange} 
-                        value={genre.name}
+                        value={genre.id}
                         >
                         {genre.name}
                         </button>

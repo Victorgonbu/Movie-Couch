@@ -1,5 +1,5 @@
 import axios from "../axios";
-import { genresURL, movieURL } from "../API";
+import { genresURL, movieURL, discoverURL } from "../API";
 
 const SET_GENRES_LIST = 'SET_GENRES_LIST';
 const SET_CURRENT_CONTENT = 'SET_CURRENT_CONTENT';
@@ -33,11 +33,14 @@ const fetchContent = (filter) => {
     
     return async (dispatch) => {
         try {
+            console.log(filter)
             const currentFilter = parameterize(filter);
             console.log(currentFilter);
-            const url = movieURL + currentFilter;
+            let url = currentFilter === 'popular' || currentFilter === 'top_rated' ? movieURL : discoverURL;
+            url += currentFilter;
+            console.log(url)
             const request = await axios.get(url);
-            console.log(request.data.results);
+            console.log(request.data.results)
             dispatch(setContent(request.data.results));
         }catch(error) {
             console.log(error);

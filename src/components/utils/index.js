@@ -1,6 +1,6 @@
 
 const formatDate = (string) => {
-    return string.split('-')[0]
+    return string ? string.split('-')[0] : ''
 };
 
 export {
