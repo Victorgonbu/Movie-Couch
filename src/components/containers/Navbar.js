@@ -2,10 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { flex } from '../../styles/App.module.css';
 import { navbar, brand, searchIcon } from '../../styles/Navbar.module.css';
 import DropdownMenu from "./DropdownMenu";
+import { connect } from 'react-redux';
+import { setSearchActive } from "../../actions";
 
-const Navbar = () => {
-    
-   
+const Navbar = (props) => {
+    const {setSearchActive} = props;
+
     return(
         <nav className={`${flex} ${navbar}`}>
            
@@ -15,11 +17,17 @@ const Navbar = () => {
                 Movie Couch
             </div>
 
-            <div className={searchIcon}>
+            <button onClick={setSearchActive} className={searchIcon}>
                 <FontAwesomeIcon icon="search"/>
-            </div>
+            </button>
         </nav>
     )
 };
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setSearchActive: () => {dispatch(setSearchActive())}
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Navbar);

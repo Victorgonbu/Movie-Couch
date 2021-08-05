@@ -8,6 +8,7 @@
 #root {
     background-color: var(--black);
     width: 100vw;
+    min-height: 100vh;
     position: relative;
     font-family: 'Manrope', sans-serif;
 }

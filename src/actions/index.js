@@ -1,9 +1,10 @@
 import axios from "../axios";
-import { genresURL, movieURL, discoverURL } from "../API";
+import { genresURL, movieURL, discoverURL, searchMovieURL } from "../API";
 
 const SET_GENRES_LIST = 'SET_GENRES_LIST';
 const SET_CURRENT_CONTENT = 'SET_CURRENT_CONTENT';
 const SET_CURRENT_FILTER = 'SET_CURRENT_FILTER';
+const SET_SEARCH_ACTIVE = 'SET_SEARCH_ACTIVE';
 
 const setGenresList = (list) => {
     return {type: SET_GENRES_LIST, payload: list}
@@ -52,8 +53,24 @@ const setCurrentFilter = (filter) => {
     return { type: SET_CURRENT_FILTER, payload: filter }
 };
 
+const setSearchActive = () => {
+    return {type: SET_SEARCH_ACTIVE}
+};
+
+const fetchSearch = (query) => {
+
+    return async (dispatch) => {
+        const url = searchMovieURL + query;
+        const request = await axios.get(url);
+        console.log(request.data);
+        dispatch(setContent(request.data.results))
+    }
+};
+
 export {
     fetchGenresList,
     fetchContent,
     setCurrentFilter,
+    setSearchActive,
+    fetchSearch,
 }

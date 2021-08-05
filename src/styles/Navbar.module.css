@@ -21,15 +21,31 @@
 
 .searchIcon {
     font-size: 1.2em;
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
 }
 
 .searchBox {
+    position: sticky;
+    top: calc(10vh - 1px);
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     text-align: right;
     white-space: nowrap;
-    padding-bottom: .5em;
+    z-index: 1;
+    border: none;
+    transition: 150ms ease-out;
+    background-color: var(--black);
+}
 
+.activeBox {
+    height: auto;
+    opacity: 1;
+    padding-bottom: .5em;
 }
 
 .searchBar {
