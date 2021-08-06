@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchContent, fetchMoreContent } from '../../actions/index';
 import {imagesURL} from '../../API';
 import ReactStars from "react-rating-stars-component";
-import { list, listItem, title, poster, itemDetails, home, starRate, date, rating, moreDetails } from '../../styles/Home.module.css';
+import { list, listItem, title, poster, itemDetails, home, starRate, date, rating, moreDetails, noMatches } from '../../styles/Home.module.css';
 import { formatDate } from '../utils/index';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -37,7 +37,7 @@ const Home = (props) => {
         <ul className={list}>
            
            {content 
-            &&
+           &&
                 content.map((item) => {
                     return (
                     <li className={listItem} key={item.id}>
@@ -60,11 +60,11 @@ const Home = (props) => {
                             <span className={rating}>{item.vote_average}/10</span>
                         </div>
                     </li>)
-                })
+                })    
             }
-           
         </ul>
         </InfiniteScroll>
+        {content && content.length === 0 && <p className={noMatches}>No matches found</p>}
     </div>
     )
 };

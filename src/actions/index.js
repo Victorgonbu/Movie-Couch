@@ -48,9 +48,9 @@ const fetchContent = (filter) => {
             let url = currentFilter === 'popular' || currentFilter === 'top_rated' ? 
             movieURL + currentFilter + '?' : discoverURL + currentFilter + '&';
             const request = await axios.get(url);
-            console.log(url)
+            const results = filterResults(request.data.results);
             dispatch(setContentURL(url))
-            dispatch(setContent(request.data.results));
+            dispatch(setContent(results));
         }catch(error) {
             console.log(error);
         }
@@ -62,11 +62,10 @@ const fetchMoreContent = (page, setHasMore, setPage) => {
         try{
             const url = getState().filter.contentURL + `page=${page}`;
             const request = await axios.get(url); 
-            console.log(page);
-            console.log(request.data);
+            const results = filterResults(request.data.results);
             if(page >= request.data.total_pages) setHasMore(false);
             setPage((state) => state + 1);
-            dispatch(addToContent(request.data.results));
+            dispatch(addToContent(results));
         }catch(error) {
             console.log(error);
         }
@@ -81,14 +80,20 @@ const setSearchActive = () => {
     return {type: SET_SEARCH_ACTIVE}
 };
 
+const filterResults = (results) => {
+    return results.filter((result) => result.poster_path );
+};
+
 const fetchSearch = (query) => {
 
     return async (dispatch) => {
         try {
             const url = searchMovieURL + query + '&';
             const request = await axios.get(url);
+            const results = filterResults(request.data.results);
+            console.log(results)
             dispatch(setContentURL(url));
-            dispatch(setContent(request.data.results));
+            dispatch(setContent(results));
         }catch(error) {
             console.log(error);
         }
