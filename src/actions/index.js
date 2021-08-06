@@ -5,6 +5,8 @@ const SET_GENRES_LIST = 'SET_GENRES_LIST';
 const SET_CURRENT_CONTENT = 'SET_CURRENT_CONTENT';
 const SET_CURRENT_FILTER = 'SET_CURRENT_FILTER';
 const SET_SEARCH_ACTIVE = 'SET_SEARCH_ACTIVE';
+const SET_CONTENT_URL = 'SET_CONTENT_URL';
+const ADD_TO_CONTENT = 'ADD_TO_CONTENT';
 
 const setGenresList = (list) => {
     return {type: SET_GENRES_LIST, payload: list}
@@ -25,6 +27,14 @@ const setContent = (list) => {
     return{type: SET_CURRENT_CONTENT, payload: list}
 };
 
+const addToContent = (list) => {
+    return{type: ADD_TO_CONTENT, payload: list}
+} 
+
+const setContentURL = (url) => {
+    return {type: SET_CONTENT_URL, payload: url}
+}
+
 const parameterize = (string) => {
     const stringCopy = string.slice();
     return stringCopy.trim().toLowerCase().replace(/\s/g, "_");
@@ -34,15 +44,29 @@ const fetchContent = (filter) => {
     
     return async (dispatch) => {
         try {
-            console.log(filter)
             const currentFilter = parameterize(filter);
-            console.log(currentFilter);
-            let url = currentFilter === 'popular' || currentFilter === 'top_rated' ? movieURL : discoverURL;
-            url += currentFilter;
-            console.log(url)
+            let url = currentFilter === 'popular' || currentFilter === 'top_rated' ? 
+            movieURL + currentFilter + '?' : discoverURL + currentFilter + '&';
             const request = await axios.get(url);
-            console.log(request.data.results)
+            console.log(url)
+            dispatch(setContentURL(url))
             dispatch(setContent(request.data.results));
+        }catch(error) {
+            console.log(error);
+        }
+    }
+};
+
+const fetchMoreContent = (page, setHasMore, setPage) => {
+    return async (dispatch, getState) => {
+        try{
+            const url = getState().filter.contentURL + `page=${page}`;
+            const request = await axios.get(url); 
+            console.log(page);
+            console.log(request.data);
+            if(page >= request.data.total_pages) setHasMore(false);
+            setPage((state) => state + 1);
+            dispatch(addToContent(request.data.results));
         }catch(error) {
             console.log(error);
         }
@@ -60,10 +84,14 @@ const setSearchActive = () => {
 const fetchSearch = (query) => {
 
     return async (dispatch) => {
-        const url = searchMovieURL + query;
-        const request = await axios.get(url);
-        console.log(request.data);
-        dispatch(setContent(request.data.results))
+        try {
+            const url = searchMovieURL + query + '&';
+            const request = await axios.get(url);
+            dispatch(setContentURL(url));
+            dispatch(setContent(request.data.results));
+        }catch(error) {
+            console.log(error);
+        }
     }
 };
 
@@ -73,4 +101,5 @@ export {
     setCurrentFilter,
     setSearchActive,
     fetchSearch,
+    fetchMoreContent,
 }

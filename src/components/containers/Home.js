@@ -1,22 +1,42 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchContent } from '../../actions/index';
+import { fetchContent, fetchMoreContent } from '../../actions/index';
 import {imagesURL} from '../../API';
 import ReactStars from "react-rating-stars-component";
 import { list, listItem, title, poster, itemDetails, home, starRate, date, rating, moreDetails } from '../../styles/Home.module.css';
 import { formatDate } from '../utils/index';
+import InfiniteScroll from 'react-infinite-scroller';
 
 const Home = (props) => {
-    const {currentFilter, fetchContent, content} = props;
+    const {currentFilter, fetchContent, content, fetchMoreContent, contentURL} = props;
+    const [hasMore, setHasMore] = useState(true);
+    const [page, setPage] = useState(2);
+    useEffect(() => {
+        fetchContent(currentFilter);
+        
+    }, [currentFilter, fetchContent]);
 
     useEffect(() => {
-        fetchContent(currentFilter);    
-    }, [currentFilter, fetchContent]);
+        return () => {
+            setPage(2);
+            setHasMore(true);
+         }
+    },[contentURL])
+    
+    const loadMoreContent = () => {
+        fetchMoreContent(page, setHasMore, setPage);
+    };
 
     return(
     <div className={home}>
+        <InfiniteScroll
+           loadMore={loadMoreContent}
+           hasMore={hasMore}
+           initialLoad={false}
+        >
         <ul className={list}>
-            {content 
+           
+           {content 
             &&
                 content.map((item) => {
                     return (
@@ -42,7 +62,9 @@ const Home = (props) => {
                     </li>)
                 })
             }
+           
         </ul>
+        </InfiniteScroll>
     </div>
     )
 };
@@ -52,13 +74,15 @@ const mapStateToProps = (state) => {
     return {
         currentFilter: state.filter.current,
         content: state.filter.content,
+        contentURL: state.filter.contentURL
     }
 };
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchContent: (filter) => {dispatch(fetchContent(filter))}      
+        fetchContent: (filter) => {dispatch(fetchContent(filter))},
+        fetchMoreContent: (page, setHasMore, setPage) => {dispatch(fetchMoreContent(page, setHasMore, setPage))},
     }
 };
 
