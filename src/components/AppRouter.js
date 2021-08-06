@@ -4,10 +4,12 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './containers/Home';
 import Navbar from './containers/Navbar';
 import SearchBox from './containers/SearchBox';
+import { connect } from 'react-redux';
 
 require('dotenv').config()
 
-function AppRouter() {
+function AppRouter(props) {
+  const { contentURL } = props;
   useEffect(() => {
     WebFont.load({
       google: {
@@ -15,6 +17,12 @@ function AppRouter() {
       }
     });
   }, []);
+
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [contentURL]);
+
   return (
     <Router>
       <Navbar />
@@ -27,4 +35,10 @@ function AppRouter() {
   );
 }
 
-export default AppRouter;
+const mapStateToProps = (state) => {
+  return {
+    contentURL: state.filter.contentURL,
+  }
+};
+
+export default connect(mapStateToProps)(AppRouter);
