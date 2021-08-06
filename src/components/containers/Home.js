@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchContent, fetchMoreContent } from '../../actions/index';
-import {imagesURL} from '../../API';
-import ReactStars from "react-rating-stars-component";
-import { list, listItem, title, poster, itemDetails, home, starRate, date, rating, moreDetails, noMatches } from '../../styles/Home.module.css';
-import { formatDate } from '../utils/index';
+import { list, home, noMatches } from '../../styles/Home.module.css';
 import InfiniteScroll from 'react-infinite-scroller';
+import Movie from '../Movie';
 
 const Home = (props) => {
     const {currentFilter, fetchContent, content, fetchMoreContent, contentURL} = props;
@@ -39,27 +37,7 @@ const Home = (props) => {
            {content 
            &&
                 content.map((item) => {
-                    return (
-                    <li className={listItem} key={item.id}>
-                        
-                        <img className={poster} alt="poster" src={`${imagesURL}${item.poster_path}`} />
-                        <div className={itemDetails}>
-                            <p className={title}>{item.title}</p>
-                            <p className={date}>{formatDate(item.release_date)}</p>
-                            <button className={moreDetails}>More Details</button>
-                            <ReactStars
-                                classNames={starRate}
-                                value={item.vote_average/2}
-                                isHalf
-                                edit={false}
-                                count={5}
-                                onChange={() => {}}
-                                size={24}
-                                activeColor="var(--white)"
-                            />
-                            <span className={rating}>{item.vote_average}/10</span>
-                        </div>
-                    </li>)
+                    return <Movie value={item} />
                 })    
             }
         </ul>
