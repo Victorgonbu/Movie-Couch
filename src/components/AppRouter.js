@@ -5,6 +5,7 @@ import Home from './containers/Home';
 import Navbar from './containers/Navbar';
 import SearchBox from './containers/SearchBox';
 import { connect } from 'react-redux';
+import MovieShow from './containers/MovieShow';
 
 require('dotenv').config()
 
@@ -30,6 +31,7 @@ function AppRouter(props) {
       <Switch>
 
         <Route exact path="/" component={Home}/>
+        <Route path="/movie/:title" component={MovieShow}/>
       </Switch>
     </Router>
   );

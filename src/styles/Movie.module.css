@@ -1,0 +1,28 @@
+.movieContainer {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.backdropContainer {
+    position: relative;
+    height: 26vh;
+    max-width: 500px;
+
+}
+
+.backdropContainer::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0px -50px 100px #000;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+}

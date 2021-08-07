@@ -53,12 +53,18 @@
 }
 
 .moreDetails {
-    background-color: transparent;
-    color: var(--blue);
-    border: none;
-    border: 1px solid white;
+    display: inline-block;
+    color: var(--red);
+    border: 1px solid var(--red);
     margin: 1em 0;
     padding: .5em;
+    text-decoration: none;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.itemDetails:hover .moreDetails {
+    pointer-events: all;
 }
 
 .rating {

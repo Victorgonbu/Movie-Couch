@@ -37,7 +37,7 @@ const Home = (props) => {
            {content 
            &&
                 content.map((item) => {
-                    return <Movie value={item} />
+                    return <Movie key={item.id} value={item} />
                 })    
             }
         </ul>

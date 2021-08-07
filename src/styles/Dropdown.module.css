@@ -12,7 +12,7 @@
     left: -100%;
     top: 10vh;
     background-color: var(--black);
-    height: 600px;
+    max-height: 90vh;
     overflow-x: hidden;
     overflow-y: auto;
     transition: 150ms cubic-bezier(0.23, 1, 0.320, 1);
