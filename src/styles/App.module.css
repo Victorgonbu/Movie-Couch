@@ -2,6 +2,11 @@
     display: flex;
 }
 
+.flexColumn {
+    composes: flex;
+    flex-direction: column;
+}
+
 .appPadding {
     padding: 1em;
 }
