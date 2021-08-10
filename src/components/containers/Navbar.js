@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { flex } from '../../styles/App.module.css';
-import { navbar, brand, searchIcon } from '../../styles/Navbar.module.css';
+import { navbar, brand, searchIcon, backButton } from '../../styles/Navbar.module.css';
 import DropdownMenu from "./DropdownMenu";
 import { connect } from 'react-redux';
 import { setSearchActive } from "../../actions";
@@ -20,6 +20,7 @@ const Navbar = (props) => {
                 
                 {pathLength > 1 ? 
                 <button 
+                className={backButton}
                 onClick={() => navigate(-1)}>
                     <FontAwesomeIcon icon="arrow-left"/>
                 </button> 
