@@ -14,9 +14,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '../utils/index';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { useLocation } from 'react-router-dom';
  
-const MovieShow = (props) => {
-    const {location} = props;
+const MovieShow = () => {
+    const location = useLocation();
+    console.log(location);
     const movieID = location.pathname.split('/')[2];
     const url = movieURL + movieID + '?append_to_response=videos';
     const [movie, setMovie] = useState(null);

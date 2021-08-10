@@ -4,6 +4,7 @@ import AppRouter from './components/AppRouter';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import configureStore from './reducers/reduxStore';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './components/utils/icons';
 import './styles/reset.css';
 import './styles/style.css';
@@ -13,7 +14,9 @@ const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store} >
-      <AppRouter />
+      <Router>
+        <AppRouter />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

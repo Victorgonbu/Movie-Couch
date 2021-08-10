@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import WebFont from 'webfontloader';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {useRoutes} from 'react-router-dom';
 import Home from './containers/Home';
 import Navbar from './containers/Navbar';
-import SearchBox from './containers/SearchBox';
 import { connect } from 'react-redux';
 import MovieShow from './containers/MovieShow';
 
@@ -24,17 +23,17 @@ function AppRouter(props) {
     window.scrollTo(0, 0);
   }, [contentURL]);
 
-  return (
-    <Router>
-      <Navbar />
-      <SearchBox />
-      <Switch>
+  const routes = useRoutes([
+    { path: '/', element: <Navbar />,
+      children: [
+        { element: <Home /> },
+        { path: 'movie/:id', element: <MovieShow/> }
+      ]
+    },
 
-        <Route exact path="/" component={Home}/>
-        <Route path="/movie/:title" component={MovieShow}/>
-      </Switch>
-    </Router>
-  );
+  ]);
+
+  return routes;
 }
 
 const mapStateToProps = (state) => {

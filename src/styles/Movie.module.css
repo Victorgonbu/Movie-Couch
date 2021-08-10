@@ -142,7 +142,6 @@
     border-radius: 5px;
     gap: 1em;
     background-color: var(--gray);
-    border-bottom: 1px solid var(--red);
     width: 100%;
 }
 
