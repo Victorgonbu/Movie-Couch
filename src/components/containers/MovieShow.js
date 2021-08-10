@@ -4,13 +4,16 @@ import axios from '../../axios';
 import { movieContainer, detailsContainer, topLeft, 
     ratingDetails, votesDetails, mainDetails, icon, topDetails,
     greenIcon, synopsis, synopsisText, synopsisTitle, watchDetails,
-    producerList, producerItem, producerLogo, producerName } from '../../styles/Movie.module.css';
+    producerList, producerItem, producerLogo, producerName, videoFrame,
+    videosCarousel } from '../../styles/Movie.module.css';
 import { FormatMoney } from 'format-money-js';
 import ReactStars from 'react-rating-stars-component';
 import Backdrop from '../movie/Backdrop';
 import { flex } from '../../styles/App.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDate } from '../utils/index';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
  
 const MovieShow = (props) => {
     const {location} = props;
@@ -41,7 +44,20 @@ const MovieShow = (props) => {
                 <span className={producerName} >{producer.name}</span>
             </p>)
         })
-    }
+    };
+
+    const mapVideos = (list) => {
+        console.log(list)
+        const filteredVideos = list.filter(video => video.official).slice(0, 8);
+        
+        return filteredVideos.map((video) => {
+            return (
+            <iframe className={videoFrame} title={video.name}
+                src={`https://www.youtube.com/embed/${video.key}`}>
+            </iframe>
+            );
+        });
+    };
 
     return(
         <div className={movieContainer}>
@@ -114,15 +130,18 @@ const MovieShow = (props) => {
                             <a className={watchDetails} href={movie.homepage}> Watch</a>
                             </p>
                             
-                        </div>
-
-                        
-                        <div className={producerList}> 
-                            {mapProducers(movie.production_companies)}
-                        </div>
-                        
+                        </div>                
 
                     </div>
+
+                    <Carousel className={videosCarousel}>
+                        {mapVideos(movie.videos.results)}
+                    </Carousel>
+                        
+                    <div className={producerList}> 
+                        {mapProducers(movie.production_companies)}
+                    </div>
+
                 </>
             }
         </div>

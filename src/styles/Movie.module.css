@@ -68,6 +68,7 @@
 
 .detailsContainer {
     composes: appPadding from './App.module.css';
+    width: 100%;
 
 }
 
@@ -126,6 +127,7 @@
 .synopsisText {
     font-weight:  100;
     font-size: .9em;
+    margin-bottom: 1em;;
 }
 
 .watchDetails {
@@ -138,9 +140,10 @@
 .producerList {
     composes: flexWrapCentered from './App.module.css';
     border-radius: 5px;
-    margin-top: 1em;
     gap: 1em;
     background-color: var(--gray);
+    border-bottom: 1px solid var(--red);
+    width: 100%;
 }
 
 .producerItem {
@@ -157,4 +160,14 @@
     font-weight: 900;
     color: #000;
     font-size: .7em;
+}
+
+.videoFrame {
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+}
+
+.videosCarousel {
+    width: 100%;
 }
