@@ -112,3 +112,25 @@
 .votesDetails {
     margin-top: .5em;;
 }
+
+.synopsis {
+    margin-top: 1em;
+}
+
+.synopsisTitle {
+    font-size: 1.3em;
+    margin-bottom: .3em;
+    color: var(--red);
+} 
+
+.synopsisText {
+    font-weight:  100;
+    font-size: .9em;
+}
+
+.watchDetails {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+}

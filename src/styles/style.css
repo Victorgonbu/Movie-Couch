@@ -1,6 +1,6 @@
 :root {
     --white: #fff;
-    --black: #262626;
+    --black: #191919;
     --red: #DA0068;
     --shadow: rgba(0, 0, 0, 0.8);
     --green: #00b200;
@@ -8,7 +8,6 @@
 
 #root {
     background-color: var(--black);
-    width: 100vw;
     min-height: 100vh;
     position: relative;
     font-family: 'Manrope', sans-serif;

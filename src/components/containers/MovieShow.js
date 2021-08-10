@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { movieURL } from '../../API';
+import { movieURL, imagesURL } from '../../API';
 import axios from '../../axios';
 import { movieContainer, detailsContainer, topLeft, 
-    ratingDetails, votesDetails, mainDetails, icon, topDetails, greenIcon } from '../../styles/Movie.module.css';
+    ratingDetails, votesDetails, mainDetails, icon, topDetails,
+    greenIcon, synopsis, synopsisText, synopsisTitle, watchDetails } from '../../styles/Movie.module.css';
 import { FormatMoney } from 'format-money-js';
 import ReactStars from 'react-rating-stars-component';
 import Backdrop from '../movie/Backdrop';
@@ -27,6 +28,19 @@ const MovieShow = (props) => {
         makeRequest();
         
     }, [url]);
+
+    const mapProducers = (list) => {
+    
+        let filteredList =  list.filter(producer => producer.logo_path);
+
+        return filteredList.map(producer => {
+            return(<p>
+                <img alt="Producer Logo" src={imagesURL + producer.logo_path}/>
+                <span>{producer.name}</span>
+            </p>)
+        })
+    }
+
     return(
         <div className={movieContainer}>
             {movie 
@@ -90,23 +104,20 @@ const MovieShow = (props) => {
                                 </p>
                             </div>
                         </div>
-        
+    
+                        <div className={synopsis}> 
+                            <h2 className={synopsisTitle}>Synopsis</h2>
+                            <p className={synopsisText}> 
+                            {movie.overview}
+                            <a className={watchDetails} href={movie.homepage}> Watch</a>
+                            </p>
+                            
+                        </div>
 
-                        <a href={movie.homepage}>Home page</a>
-
-                        <p>{movie.overview}</p>
-
-                        <p> <span>Produced by:</span>
-                        {movie.production_companies.map((comp) => {
-                            return <span>{comp.name}</span>
-                        })}</p>
-
-                        
-                        <p><span>Status:</span>
-                            <span>{movie.status}</span>
-                        </p>
-
-                        
+                        <div> 
+                            <span>Producers:</span>
+                            {mapProducers(movie.production_companies)}
+                        </div>
 
                     </div>
                 </>
