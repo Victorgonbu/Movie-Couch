@@ -137,18 +137,24 @@
 
 .producerList {
     composes: flexWrapCentered from './App.module.css';
-    padding: .5em;
-    border: 1px solid black;
     border-radius: 5px;
     margin-top: 1em;
     gap: 1em;
-    background-color: var(--white);
+    background-color: var(--gray);
 }
 
 .producerItem {
+  padding: .2em;
   width: 5em;
+  text-align: center;
 }
 
 .producerLogo {
     width: 100%;
+}
+
+.producerName {
+    font-weight: 900;
+    color: #000;
+    font-size: .7em;
 }
