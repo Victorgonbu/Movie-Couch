@@ -134,3 +134,21 @@
     font-weight: bold;
     font-style: italic;
 }
+
+.producerList {
+    composes: flexWrapCentered from './App.module.css';
+    padding: .5em;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 1em;
+    gap: 1em;
+    background-color: var(--white);
+}
+
+.producerItem {
+  width: 5em;
+}
+
+.producerLogo {
+    width: 100%;
+}

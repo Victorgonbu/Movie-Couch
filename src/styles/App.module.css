@@ -7,6 +7,13 @@
     flex-direction: column;
 }
 
+.flexWrapCentered {
+    composes: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .appPadding {
     padding: 1em;
 }

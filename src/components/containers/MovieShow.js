@@ -3,7 +3,8 @@ import { movieURL, imagesURL } from '../../API';
 import axios from '../../axios';
 import { movieContainer, detailsContainer, topLeft, 
     ratingDetails, votesDetails, mainDetails, icon, topDetails,
-    greenIcon, synopsis, synopsisText, synopsisTitle, watchDetails } from '../../styles/Movie.module.css';
+    greenIcon, synopsis, synopsisText, synopsisTitle, watchDetails,
+    producerList, producerItem, producerLogo } from '../../styles/Movie.module.css';
 import { FormatMoney } from 'format-money-js';
 import ReactStars from 'react-rating-stars-component';
 import Backdrop from '../movie/Backdrop';
@@ -34,9 +35,9 @@ const MovieShow = (props) => {
         let filteredList =  list.filter(producer => producer.logo_path);
 
         return filteredList.map(producer => {
-            return(<p>
-                <img alt="Producer Logo" src={imagesURL + producer.logo_path}/>
-                <span>{producer.name}</span>
+            return(
+            <p className={producerItem}>
+                <img className={producerLogo} alt="Producer Logo" src={imagesURL + producer.logo_path}/>
             </p>)
         })
     }
@@ -114,8 +115,7 @@ const MovieShow = (props) => {
                             
                         </div>
 
-                        <div> 
-                            <span>Producers:</span>
+                        <div className={producerList}> 
                             {mapProducers(movie.production_companies)}
                         </div>
 
