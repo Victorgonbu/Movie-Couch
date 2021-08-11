@@ -9,9 +9,8 @@ const Home = (props) => {
     const {currentFilter, fetchContent, content, fetchMoreContent, contentURL} = props;
     const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(2);
-    useEffect(() => {
-        console.log('test')
-        fetchContent(currentFilter);
+    useEffect(() => { 
+        if(currentFilter)fetchContent(currentFilter);
     }, [currentFilter, fetchContent]);
 
     useEffect(() => {

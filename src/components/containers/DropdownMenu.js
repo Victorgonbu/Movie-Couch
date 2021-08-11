@@ -17,17 +17,9 @@ const DropdownMenu = (props) => {
     useEffect(() => {
         let filterActive;
         const popularRef = document.querySelectorAll("button")[1];
-        console.log(popularRef)
-        console.log(filterRef)
-        
         filterActive = filterRef.current ? filterRef.current : popularRef;
-
-        console.log(filterActive)
-      
         filterActive.classList.add(activeFilter);
        
-        
-        
         return () => {
 
             if(filterActive) filterActive.classList.remove(activeFilter);
