@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { fetchGenresList, setCurrentFilter } from '../../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dropdownButton, active, activeFilter } from '../../styles/Dropdown.module.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const DropdownMenu = (props) => {
     const { genres, fetchGenres, currentFilter, setCurrentFilter } = props;
     const dropdownRef = useRef(null);
     const filterRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchGenres();
@@ -34,6 +36,7 @@ const DropdownMenu = (props) => {
         setCurrentFilter(e.target.value);
         filterRef.current = e.target;
         handleDropdown();
+        navigate('/');
     };
 
 

@@ -28,9 +28,14 @@ const SearchBox = (props) => {
         }, 50)
     };
 
+    const handleClose = () => {
+        setSearchActive();
+        setInputValue('');
+    };
+
     return(
         <div ref={searchRef} className={searchBox}>
-            <button onClick={setSearchActive}
+            <button onClick={handleClose}
             className={closeSearchButton} >
                 &times;
             </button>
