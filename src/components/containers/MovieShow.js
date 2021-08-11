@@ -27,9 +27,7 @@ const MovieShow = () => {
 
   useEffect(() => {
     async function makeRequest() {
-      console.log(url);
       const request = await axios.get(url);
-      console.log(request);
       setMovie(request.data);
     }
     makeRequest();
@@ -39,7 +37,7 @@ const MovieShow = () => {
     const filteredList = list.filter((producer) => producer.logo_path);
 
     return filteredList.map((producer) => (
-      <p className={producerItem}>
+      <p key={producer.name} className={producerItem}>
         <img className={producerLogo} alt="Producer Logo" src={imagesURL + producer.logo_path} />
         <span className={producerName}>{producer.name}</span>
       </p>
@@ -47,11 +45,11 @@ const MovieShow = () => {
   };
 
   const mapVideos = (list) => {
-    console.log(list);
     const filteredVideos = list.filter((video) => video.official).slice(0, 8);
 
     return filteredVideos.map((video) => (
       <iframe
+        key={video.id}
         className={videoFrame}
         title={video.name}
         src={`https://www.youtube.com/embed/${video.key}`}
