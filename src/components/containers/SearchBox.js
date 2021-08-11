@@ -21,10 +21,11 @@ const SearchBox = (props) => {
     };
 
     const handleSearch = () => {
-        navigate("/");
+        fetchSearch(inputValue);
         setTimeout(() => {
-            fetchSearch(inputValue);   
-        }, 0)
+            navigate("/");
+               
+        }, 50)
     };
 
     return(
