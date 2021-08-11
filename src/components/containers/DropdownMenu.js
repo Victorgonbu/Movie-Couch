@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetchGenresList, setCurrentFilter } from '../../actions';
 import {
   dropdownButton, active, activeFilter, dropdownMenu, dropdownItem,
@@ -20,9 +21,8 @@ const DropdownMenu = (props) => {
   }, [fetchGenres]);
 
   useEffect(() => {
-    let filterActive;
     const popularRef = document.querySelectorAll('button')[1];
-    filterActive = filterRef.current ? filterRef.current : popularRef;
+    const filterActive = filterRef.current ? filterRef.current : popularRef;
     filterActive.classList.add(activeFilter);
 
     return () => {
@@ -52,6 +52,7 @@ const DropdownMenu = (props) => {
                 <>
                   <li>
                     <button
+                      type="button"
                       className={dropdownItem}
                       onClick={handleFilterChange}
                       value="Popular"
@@ -61,6 +62,7 @@ const DropdownMenu = (props) => {
                   </li>
                   <li>
                     <button
+                      type="button"
                       className={dropdownItem}
                       onClick={handleFilterChange}
                       value="Top Rated"
@@ -71,6 +73,7 @@ const DropdownMenu = (props) => {
                     {genres.map((genre) => (
                       <li key={genre.id}>
                         <button
+                          type="button"
                           className={dropdownItem}
                           onClick={handleFilterChange}
                           value={genre.id}
@@ -85,6 +88,17 @@ const DropdownMenu = (props) => {
       </ul>
     </>
   );
+};
+
+DropdownMenu.propTypes = {
+  genres: PropTypes.arrayOf(PropTypes.object),
+  fetchGenres: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired,
+  setCurrentFilter: PropTypes.func.isRequired,
+};
+
+DropdownMenu.defaultProps = {
+  genres: null,
 };
 
 const mapStateToProps = (state) => ({
