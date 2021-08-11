@@ -73,3 +73,8 @@
     position: absolute;
     left: .5em;
 }
+
+.closeSearchButton {
+    composes: dropdownButton from './Dropdown.module.css';
+    font-size: 1.5em;
+}

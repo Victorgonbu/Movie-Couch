@@ -1,12 +1,12 @@
-import { searchBox, searchButton, searchBar, activeBox } from '../../styles/Navbar.module.css';
+import { searchBox, searchButton, searchBar, activeBox, closeSearchButton } from '../../styles/Navbar.module.css';
 import { useRef,  useState } from 'react';
 import useDidMountEffect from '../../hooks/useDidMountEffect';
-import { fetchSearch } from '../../actions/index';
+import { fetchSearch, setSearchActive } from '../../actions/index';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const SearchBox = (props) => {
-    const { searchActive, fetchSearch } = props;
+    const { searchActive, fetchSearch, setSearchActive } = props;
     const searchRef = useRef(null);
     const [inputValue, setInputValue] = useState('');
     const navigate = useNavigate();
@@ -25,12 +25,14 @@ const SearchBox = (props) => {
         setTimeout(() => {
             fetchSearch(inputValue);   
         }, 0)
-       
-
     };
 
     return(
         <div ref={searchRef} className={searchBox}>
+            <button onClick={setSearchActive}
+            className={closeSearchButton} >
+                &times;
+            </button>
             <input 
             placeholder="Type movie title" 
             className={searchBar} 
@@ -51,6 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSearch: (query) => {dispatch(fetchSearch(query))},
+        setSearchActive: () => {dispatch(setSearchActive())},
     }
 };
 

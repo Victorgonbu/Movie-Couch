@@ -13,7 +13,7 @@ const filterReducer = (state = {current: 'Popular', searchActive: false, ref: nu
         case 'SET_CONTENT_URL': 
           return {...state, contentURL: payload}
         case 'SET_SEARCH_ACTIVE': 
-          return {...state, searchActive: true};
+          return {...state, searchActive: !state.searchActive};
         default: 
           return state;       
     }
