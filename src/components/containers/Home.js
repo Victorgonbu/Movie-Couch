@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
+import PropTypes from 'prop-types';
 import { fetchContent, fetchMoreContent } from '../../actions/index';
 import { list, home, noMatches } from '../../styles/Home.module.css';
 import Movie from '../Movie';
@@ -42,6 +43,18 @@ const Home = (props) => {
   );
 };
 
+Home.propTypes = {
+  currentFilter: PropTypes.string.isRequired,
+  fetchContent: PropTypes.func.isRequired,
+  content: PropTypes.arrayOf(PropTypes.object),
+  fetchMoreContent: PropTypes.func.isRequired,
+  contentURL: PropTypes.string.isRequired,
+};
+
+Home.defaultProps = {
+  content: null.Home,
+};
+
 const mapStateToProps = (state) => ({
   currentFilter: state.filter.current,
   content: state.filter.content,
@@ -50,7 +63,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchContent: (filter) => { dispatch(fetchContent(filter)); },
-  fetchMoreContent: (page, setHasMore, setPage) => { dispatch(fetchMoreContent(page, setHasMore, setPage)); },
+  fetchMoreContent: (page, setHasMore, setPage) => {
+    dispatch(fetchMoreContent(page, setHasMore, setPage));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
