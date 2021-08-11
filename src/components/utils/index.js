@@ -1,8 +1,3 @@
+const formatDate = (string) => (string ? string.split('-')[0] : '');
 
-const formatDate = (string) => {
-    return string ? string.split('-')[0] : ''
-};
-
-export {
-    formatDate,
-}
+export default formatDate;

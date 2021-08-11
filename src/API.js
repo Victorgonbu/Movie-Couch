@@ -7,10 +7,10 @@ const searchMovieURL = '/search/movie?query=';
 const youtubeURL = 'https://www.youtube.com/watch?v=';
 
 export {
-    genresURL,
-    movieURL,
-    imagesURL,
-    discoverURL,
-    searchMovieURL,
-    backdropURL
-}
+  genresURL,
+  movieURL,
+  imagesURL,
+  discoverURL,
+  searchMovieURL,
+  backdropURL,
+};
