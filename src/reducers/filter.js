@@ -1,9 +1,11 @@
-const filterReducer = (state = {current: 'Popular', searchActive: false}, action) => {
+const filterReducer = (state = {current: 'Popular', searchActive: false, ref: null}, action) => {
     const {type, payload} = action;
 
     switch (type) {
         case 'SET_CURRENT_FILTER':
           return {...state, current: payload};
+        case 'SET_FILTER_REF':
+          return {...state, ref: payload}
         case 'SET_CURRENT_CONTENT':
           return {...state, content: payload};
         case 'ADD_TO_CONTENT':

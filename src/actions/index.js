@@ -7,6 +7,7 @@ const SET_CURRENT_FILTER = 'SET_CURRENT_FILTER';
 const SET_SEARCH_ACTIVE = 'SET_SEARCH_ACTIVE';
 const SET_CONTENT_URL = 'SET_CONTENT_URL';
 const ADD_TO_CONTENT = 'ADD_TO_CONTENT';
+const SET_FILTER_REF = 'SET_FILTER_REF';
 
 const setGenresList = (list) => {
     return {type: SET_GENRES_LIST, payload: list}
@@ -99,6 +100,10 @@ const fetchSearch = (query) => {
     }
 };
 
+const setFilterRef = (ref) => {
+    return {type: SET_FILTER_REF, payload: ref}
+};
+
 export {
     fetchGenresList,
     fetchContent,
@@ -106,4 +111,5 @@ export {
     setSearchActive,
     fetchSearch,
     fetchMoreContent,
+    setFilterRef
 }

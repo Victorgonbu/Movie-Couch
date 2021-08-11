@@ -4,28 +4,17 @@ import { navbar, brand, searchIcon, backButton } from '../../styles/Navbar.modul
 import DropdownMenu from "./DropdownMenu";
 import { connect } from 'react-redux';
 import { setSearchActive } from "../../actions";
-import { useNavigate, Outlet, useLocation} from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 import SearchBox from "./SearchBox";
 
 const Navbar = (props) => {
     const {setSearchActive } = props;
-    const navigate = useNavigate();
-    const location = useLocation();
-    const pathLength = location.pathname.length;
-
-
+    
     return(
         <>
             <nav className={`${flex} ${navbar}`}>
                 
-                {pathLength > 1 ? 
-                <button 
-                className={backButton}
-                onClick={() => navigate(-1)}>
-                    <FontAwesomeIcon icon="arrow-left"/>
-                </button> 
-                : 
-               <DropdownMenu /> }
+                <DropdownMenu /> 
 
                 <div className={brand}>
                     Movie Couch

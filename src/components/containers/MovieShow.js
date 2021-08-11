@@ -18,7 +18,6 @@ import { useLocation } from 'react-router-dom';
  
 const MovieShow = () => {
     const location = useLocation();
-    console.log(location);
     const movieID = location.pathname.split('/')[2];
     const url = movieURL + movieID + '?append_to_response=videos';
     const [movie, setMovie] = useState(null);

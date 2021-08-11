@@ -5,22 +5,28 @@ import { fetchGenresList, setCurrentFilter } from '../../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dropdownButton, active, activeFilter } from '../../styles/Dropdown.module.css'; 
 
-const DropdownMenu = React.forwardRef((props, ref) => {
+const DropdownMenu = (props) => {
     const { genres, fetchGenres, currentFilter, setCurrentFilter } = props;
     const dropdownRef = useRef(null);
     const filterRef = useRef(null);
-    
+
     useEffect(() => {
         fetchGenres();
     }, [fetchGenres]);
 
     useEffect(() => {
-       
         let filterActive;
-        if(filterRef.current){
-            filterActive = filterRef.current;
-            filterActive.classList.add(activeFilter);
-        }
+        const popularRef = document.querySelectorAll("button")[1];
+        console.log(popularRef)
+        console.log(filterRef)
+        
+        filterActive = filterRef.current ? filterRef.current : popularRef;
+
+        console.log(filterActive)
+      
+        filterActive.classList.add(activeFilter);
+       
+        
         
         return () => {
 
@@ -50,7 +56,6 @@ const DropdownMenu = React.forwardRef((props, ref) => {
                 <>
                     <li>
                         <button
-                        ref={filterRef}
                         className={dropdownItem} 
                         onClick={handleFilterChange}
                         value="Popular"
@@ -81,7 +86,7 @@ const DropdownMenu = React.forwardRef((props, ref) => {
             </ul>
         </>
     )
-})
+}
 
 const mapStateToProps = (state) => {
     return {

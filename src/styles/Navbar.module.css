@@ -68,4 +68,8 @@
 
 .backButton {
     composes: dropdownButton from './Dropdown.module.css';
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: .5em;
 }

@@ -10,6 +10,7 @@ const Home = (props) => {
     const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(2);
     useEffect(() => {
+        console.log('test')
         fetchContent(currentFilter);
     }, [currentFilter, fetchContent]);
 
