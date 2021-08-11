@@ -3,11 +3,13 @@ import { useRef,  useState } from 'react';
 import useDidMountEffect from '../../hooks/useDidMountEffect';
 import { fetchSearch } from '../../actions/index';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBox = (props) => {
     const { searchActive, fetchSearch } = props;
     const searchRef = useRef(null);
     const [inputValue, setInputValue] = useState('');
+    const navigate = useNavigate();
 
     useDidMountEffect(() => {
         searchRef.current.classList.toggle(activeBox);
@@ -18,6 +20,15 @@ const SearchBox = (props) => {
         setInputValue(e.target.value);
     };
 
+    const handleSearch = () => {
+        navigate("/");
+        setTimeout(() => {
+            fetchSearch(inputValue);   
+        }, 0)
+       
+
+    };
+
     return(
         <div ref={searchRef} className={searchBox}>
             <input 
@@ -26,7 +37,7 @@ const SearchBox = (props) => {
             onChange={handleInputChange}
             value={inputValue}
             />
-            <button onClick={() => {fetchSearch(inputValue)}} type="button" className={searchButton}>Search</button>
+            <button onClick={handleSearch} type="button" className={searchButton}>Search</button>
         </div> 
     )
 };

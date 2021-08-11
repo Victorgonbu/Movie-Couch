@@ -11,7 +11,6 @@ const Home = (props) => {
     const [page, setPage] = useState(2);
     useEffect(() => {
         fetchContent(currentFilter);
-        console.log('mmbicho')
     }, [currentFilter, fetchContent]);
 
     useEffect(() => {

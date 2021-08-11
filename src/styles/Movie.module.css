@@ -9,6 +9,7 @@
     position: relative;
     height: 26vh;
     max-width: 500px;
+    width: 100%;
 }
 
 .backdropContainer::before {

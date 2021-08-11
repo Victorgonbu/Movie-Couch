@@ -91,7 +91,6 @@ const fetchSearch = (query) => {
             const url = searchMovieURL + query + '&';
             const request = await axios.get(url);
             const results = filterResults(request.data.results);
-            console.log(results)
             dispatch(setContentURL(url));
             dispatch(setContent(results));
         }catch(error) {
