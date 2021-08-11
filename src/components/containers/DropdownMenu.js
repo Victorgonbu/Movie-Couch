@@ -93,12 +93,13 @@ const DropdownMenu = (props) => {
 DropdownMenu.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.object),
   fetchGenres: PropTypes.func.isRequired,
-  currentFilter: PropTypes.string.isRequired,
+  currentFilter: PropTypes.string,
   setCurrentFilter: PropTypes.func.isRequired,
 };
 
 DropdownMenu.defaultProps = {
   genres: null,
+  currentFilter: null,
 };
 
 const mapStateToProps = (state) => ({

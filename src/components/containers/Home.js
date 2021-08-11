@@ -44,15 +44,17 @@ const Home = (props) => {
 };
 
 Home.propTypes = {
-  currentFilter: PropTypes.string.isRequired,
+  currentFilter: PropTypes.string,
   fetchContent: PropTypes.func.isRequired,
   content: PropTypes.arrayOf(PropTypes.object),
   fetchMoreContent: PropTypes.func.isRequired,
-  contentURL: PropTypes.string.isRequired,
+  contentURL: PropTypes.string,
 };
 
 Home.defaultProps = {
-  content: null.Home,
+  currentFilter: null,
+  content: null,
+  contentURL: null,
 };
 
 const mapStateToProps = (state) => ({
