@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   searchBox, searchButton, searchBar, activeBox, closeSearchButton,
 } from '../../styles/Navbar.module.css';
@@ -36,6 +37,7 @@ const SearchBox = (props) => {
   return (
     <div ref={searchRef} className={searchBox}>
       <button
+        type="button"
         onClick={handleClose}
         className={closeSearchButton}
       >
@@ -50,6 +52,12 @@ const SearchBox = (props) => {
       <button onClick={handleSearch} type="button" className={searchButton}>Search</button>
     </div>
   );
+};
+
+SearchBox.propTypes = {
+  searchActive: PropTypes.bool.isRequired,
+  fetchSearch: PropTypes.func.isRequired,
+  setSearchActive: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
