@@ -13,4 +13,5 @@ export {
   discoverURL,
   searchMovieURL,
   backdropURL,
+  youtubeURL,
 };

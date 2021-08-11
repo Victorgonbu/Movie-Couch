@@ -13,6 +13,19 @@ const SET_FILTER_REF = 'SET_FILTER_REF';
 
 const setGenresList = (list) => ({ type: SET_GENRES_LIST, payload: list });
 
+const setContent = (list) => ({ type: SET_CURRENT_CONTENT, payload: list });
+
+const addToContent = (list) => ({ type: ADD_TO_CONTENT, payload: list });
+
+const setContentURL = (url) => ({ type: SET_CONTENT_URL, payload: url });
+
+const filterResults = (results) => results.filter((result) => result.poster_path);
+
+const parameterize = (string) => {
+  const stringCopy = string.slice();
+  return stringCopy.trim().toLowerCase().replace(/\s/g, '_');
+};
+
 const fetchGenresList = async (dispatch, getState) => {
   try {
     if (!getState().genres.list) {
@@ -20,19 +33,8 @@ const fetchGenresList = async (dispatch, getState) => {
       dispatch(setGenresList(request.data.genres));
     }
   } catch (error) {
-    console.log(error);
+    // TODO HANDLE ERROR WHEN UNABLE TO FETCH GENRES
   }
-};
-
-const setContent = (list) => ({ type: SET_CURRENT_CONTENT, payload: list });
-
-const addToContent = (list) => ({ type: ADD_TO_CONTENT, payload: list });
-
-const setContentURL = (url) => ({ type: SET_CONTENT_URL, payload: url });
-
-const parameterize = (string) => {
-  const stringCopy = string.slice();
-  return stringCopy.trim().toLowerCase().replace(/\s/g, '_');
 };
 
 const fetchContent = (filter) => async (dispatch) => {
@@ -45,7 +47,7 @@ const fetchContent = (filter) => async (dispatch) => {
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {
-    console.log(error);
+    // TODO HANDLE ERROR WHEN UNABLE TO FETCH CONTENT
   }
 };
 
@@ -58,15 +60,13 @@ const fetchMoreContent = (page, setHasMore, setPage) => async (dispatch, getStat
     setPage((state) => state + 1);
     dispatch(addToContent(results));
   } catch (error) {
-    console.log(error);
+    // TODO HANDLE ERROR WHEN UNABLE TO FETCH MORE CONTENT
   }
 };
 
 const setCurrentFilter = (filter) => ({ type: SET_CURRENT_FILTER, payload: filter });
 
 const setSearchActive = () => ({ type: SET_SEARCH_ACTIVE });
-
-const filterResults = (results) => results.filter((result) => result.poster_path);
 
 const fetchSearch = (query) => async (dispatch) => {
   try {
@@ -77,7 +77,7 @@ const fetchSearch = (query) => async (dispatch) => {
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {
-    console.log(error);
+    // TODO HANDLE ERROR WHEN UNABLE TO FETCH SEARCH
   }
 };
 

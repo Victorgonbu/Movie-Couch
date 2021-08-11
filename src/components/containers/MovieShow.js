@@ -4,7 +4,8 @@ import ReactStars from 'react-rating-stars-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Carousel } from 'react-responsive-carousel';
 import { useLocation } from 'react-router-dom';
-import { movieURL, imagesURL } from '../../API';
+import ReactPlayer from 'react-player';
+import { movieURL, imagesURL, youtubeURL } from '../../API';
 import axios from '../../axios';
 import {
   movieContainer, detailsContainer, topLeft,
@@ -48,11 +49,10 @@ const MovieShow = () => {
     const filteredVideos = list.filter((video) => video.official).slice(0, 8);
 
     return filteredVideos.map((video) => (
-      <iframe
+      <ReactPlayer
         key={video.id}
         className={videoFrame}
-        title={video.name}
-        src={`https://www.youtube.com/embed/${video.key}`}
+        url={youtubeURL + video.key}
       />
     ));
   };
