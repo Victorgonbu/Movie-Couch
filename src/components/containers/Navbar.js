@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { flex } from '../../styles/App.module.css';
 import {
-  navbar, brand, searchIcon, backButton,
+  navbar, brand, searchIcon,
 } from '../../styles/Navbar.module.css';
 import DropdownMenu from './DropdownMenu';
 import { setSearchActive } from '../../actions';
@@ -22,7 +23,7 @@ const Navbar = (props) => {
           Movie Couch
         </div>
 
-        <button onClick={setSearchActive} className={searchIcon}>
+        <button type="button" onClick={setSearchActive} className={searchIcon}>
           <FontAwesomeIcon icon="search" />
         </button>
       </nav>
@@ -30,6 +31,10 @@ const Navbar = (props) => {
       <Outlet />
     </>
   );
+};
+
+Navbar.propTypes = {
+  setSearchActive: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
