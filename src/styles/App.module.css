@@ -1,19 +1,19 @@
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flexColumn {
-    composes: flex;
-    flex-direction: column;
+  composes: flex;
+  flex-direction: column;
 }
 
 .flexWrapCentered {
-    composes: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  composes: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .appPadding {
-    padding: 1em;
+  padding: 1em;
 }
