@@ -8,17 +8,17 @@ React movie web app to search for movies using the [TMDB API](https://www.themov
 
 # Usage
 
-- Filter
+- Filter   
 It counts with a dropdown menu filter to look for popular, top rated and genres.  
 
 ![FLTERSCREENSHOT](/src/imgs/sh/FILTER.png)  
 
-- Search
+- Search  
 It counts with a search box to look for a desired title.  
 
 ![SEARCHSCREENSHOT](/src/imgs/sh/SEARCH.png)  
 
-- More details
+- More details  
 
 Every movie listed counts with a 'More details' button to display all details about selected movie.
 
