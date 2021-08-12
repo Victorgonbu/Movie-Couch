@@ -1,28 +1,38 @@
 # Movie Couch
 
-React movie web app to search for movies using the [TMDB API](https://www.themoviedb.org)
+React web app to search for movies using the [TMDB API](https://www.themoviedb.org)
 
-# App screenshots
+## App screenshots  
 
-![HOMESCREENSHOT](/src/imgs/sh/HOME.png)  
+- HOME  
 
-# Usage
+<div style="text-align:center">
+  </img src="/src/imgs/sh/HOME.png" alt='Home screenshot'> 
+</div>   
+
+## Usage
 
 - Filter   
-It counts with a dropdown menu filter to look for popular, top rated and genres.  
+>> It counts with a dropdown menu filter to look for movies by genres, popularity and rating.  
 
-![FLTERSCREENSHOT](/src/imgs/sh/FILTER.png)  
+<div style="text-align:center">
+  </img src="/src/imgs/sh/FILTER.png" alt='Filter screenshot'> 
+</div>
 
 - Search  
-It counts with a search box to look for a desired title.  
+>> It counts with a search box to look for the desired title.  
 
-![SEARCHSCREENSHOT](/src/imgs/sh/SEARCH.png)  
+<div style="text-align:center">
+  </img src="/src/imgs/sh/SEARCH.png" alt='Search screenshot'> 
+</div>
 
 - More details  
 
-Every movie listed counts with a 'More details' button to display all details about selected movie.
+>> Every movie listed counts with a 'More details' button to display all details about it.
 
-![MOREDETAILSSCREENSHOT](/src/imgs/sh/MOVIE.png)
+<div style="text-align:center">
+  </img src="/src/imgs/sh/MOVIE.png" alt='More details screenshot'> 
+</div>
 
 ## Built With
 
@@ -40,6 +50,10 @@ Every movie listed counts with a 'More details' button to display all details ab
 
 [Netlify deploy link](https://movie-couch.netlify.app)
 
+## Video Demo
+
+
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -47,7 +61,7 @@ To get a local copy up and running follow these simple example steps.
 - Git clone https://github.com/Shaqri/Movie-Couch.git
 - Move to the root directory in your command line
 - run `yarn install` to install all dependencies
-- run `yarn start` to start app in your localhost
+- run `yarn start` to start the app in your localhost
 
 
 ## Author
