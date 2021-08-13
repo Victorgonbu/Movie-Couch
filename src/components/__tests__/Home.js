@@ -30,7 +30,7 @@ describe('Home', () => {
   describe('Fetch movies from API if filter given', () => {
     it('Display if movie poster_path field retrieved', async () => {
       render(<Home currentFilter="Popular" />);
-      await waitFor(async () => expect(await screen.getByTestId('movie')).toBeInTheDocument());
+      await waitFor(() => expect(screen.getByTestId('movie')).toBeInTheDocument());
       expect(await screen.getByTestId('movie')).toBeInTheDocument();
     });
 
@@ -48,7 +48,7 @@ describe('Home', () => {
       );
 
       render(<Home currentFilter="Popular" />);
-      await waitFor(async () => expect(await screen.getByText('No matches found')).toBeInTheDocument());
+      await waitFor(() => expect(screen.getByText('No matches found')).toBeInTheDocument());
       expect(await screen.queryByTestId('movie')).not.toBeInTheDocument();
       expect(await screen.getByText('No matches found')).toBeInTheDocument();
     });

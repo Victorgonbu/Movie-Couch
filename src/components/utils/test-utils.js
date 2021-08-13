@@ -1,6 +1,7 @@
 import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from '../../reducers/reduxStore';
 
 function render(
@@ -12,7 +13,7 @@ function render(
   } = {},
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return <Provider store={store}><Router>{children}</Router></Provider>;
   }
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }

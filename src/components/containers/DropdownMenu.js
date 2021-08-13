@@ -22,14 +22,17 @@ const DropdownMenu = (props) => {
   }, [fetchGenres]);
 
   useEffect(() => {
-    const popularRef = document.querySelectorAll('button')[1];
-    const filterActive = filterRef.current ? filterRef.current : popularRef;
-    filterActive.classList.add(activeFilter);
+    let filterActive;
+
+    if (filterRef.current) {
+      filterActive = filterRef.current;
+      filterActive.classList.add(activeFilter);
+    }
 
     return () => {
       if (filterActive) filterActive.classList.remove(activeFilter);
     };
-  }, [genres, currentFilter]);
+  }, [genres, currentFilter, filterRef]);
 
   const handleDropdown = () => {
     dropdownRef.current.classList.toggle(active);
@@ -44,19 +47,24 @@ const DropdownMenu = (props) => {
 
   return (
     <>
-      <button className={dropdownButton} onClick={handleDropdown} type="button">
+      <button data-testid="dropdown-button" className={dropdownButton} onClick={handleDropdown} type="button">
         <FontAwesomeIcon icon="bars" />
       </button>
-      <ul className={dropdownMenu} ref={dropdownRef}>
+      <ul data-testid="dropdown-menu" className={dropdownMenu} ref={dropdownRef}>
         {genres
                 && (
                 <>
-                  <DropdownItem onChange={handleFilterChange} value="Popular" text="Popular" />
-                  <DropdownItem onChange={handleFilterChange} value="Top Rated" text="Top Rated" />
+                  <DropdownItem
+                    initialRef={filterRef}
+                    handleClick={handleFilterChange}
+                    value="Popular"
+                    text="Popular"
+                  />
+                  <DropdownItem handleClick={handleFilterChange} value="Top Rated" text="Top Rated" />
                     {genres.map((genre) => (
                       <DropdownItem
                         key={genre.id}
-                        onChange={handleFilterChange}
+                        handleClick={handleFilterChange}
                         value={genre.id}
                         text={genre.name}
                       />
