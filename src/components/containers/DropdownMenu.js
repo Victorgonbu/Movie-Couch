@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchGenresList, setCurrentFilter } from '../../actions';
 import {
-  dropdownButton, active, activeFilter, dropdownMenu, dropdownItem,
+  dropdownButton, active, activeFilter, dropdownMenu,
 } from '../../styles/Dropdown.module.css';
+import DropdownItem from '../DropdownItem';
 
 const DropdownMenu = (props) => {
   const {
@@ -50,37 +51,15 @@ const DropdownMenu = (props) => {
         {genres
                 && (
                 <>
-                  <li>
-                    <button
-                      type="button"
-                      className={dropdownItem}
-                      onClick={handleFilterChange}
-                      value="Popular"
-                    >
-                      Popular
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className={dropdownItem}
-                      onClick={handleFilterChange}
-                      value="Top Rated"
-                    >
-                      Top Rated
-                    </button>
-                  </li>
+                  <DropdownItem onChange={handleFilterChange} value="Popular" text="Popular" />
+                  <DropdownItem onChange={handleFilterChange} value="Top Rated" text="Top Rated" />
                     {genres.map((genre) => (
-                      <li key={genre.id}>
-                        <button
-                          type="button"
-                          className={dropdownItem}
-                          onClick={handleFilterChange}
-                          value={genre.id}
-                        >
-                          {genre.name}
-                        </button>
-                      </li>
+                      <DropdownItem
+                        key={genre.id}
+                        onChange={handleFilterChange}
+                        value={genre.id}
+                        text={genre.name}
+                      />
                     ))}
                 </>
                 )}
