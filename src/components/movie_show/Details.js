@@ -64,9 +64,12 @@ const Details = (props) => {
 };
 
 Details.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.oneOf([
+  movie: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
+    PropTypes.bool,
+    PropTypes.array,
+    PropTypes.object,
   ])).isRequired,
 };
 

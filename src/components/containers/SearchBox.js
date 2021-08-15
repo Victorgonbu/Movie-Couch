@@ -9,7 +9,10 @@ import useDidMountEffect from '../../hooks/useDidMountEffect';
 import { fetchSearch, setSearchActive } from '../../actions/index';
 
 const SearchBox = (props) => {
-  const { searchActive, fetchSearch, setSearchActive } = props;
+  const {
+    searchActive, fetchSearch, setSearchActive,
+    currentFilter,
+  } = props;
   const searchRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
@@ -24,9 +27,7 @@ const SearchBox = (props) => {
 
   const handleSearch = () => {
     fetchSearch(inputValue);
-    setTimeout(() => {
-      navigate('/');
-    }, 50);
+    if (currentFilter === null) navigate('/');
   };
 
   const handleClose = () => {
@@ -58,10 +59,16 @@ SearchBox.propTypes = {
   searchActive: PropTypes.bool.isRequired,
   fetchSearch: PropTypes.func.isRequired,
   setSearchActive: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string,
+};
+
+SearchBox.defaultProps = {
+  currentFilter: null,
 };
 
 const mapStateToProps = (state) => ({
   searchActive: state.filter.searchActive,
+  currentFilter: state.filter.current,
 });
 
 const mapDispatchToProps = (dispatch) => ({
