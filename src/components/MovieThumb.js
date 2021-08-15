@@ -1,8 +1,8 @@
-import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Rating from './movie_show/Rating';
 import {
-  listItem, poster, itemDetails, title, date, moreDetails, starRate, rating,
+  listItem, poster, itemDetails, title, date, moreDetails, starRate,
 } from '../styles/Home.module.css';
 import { imagesURL } from '../API';
 import formatDate from './utils/index';
@@ -17,20 +17,10 @@ const MovieThumb = (props) => {
         <p className={title}>{value.title}</p>
         <p className={date}>{formatDate(value.release_date)}</p>
         <Link to={`/movie/${value.id}`} className={moreDetails}>More Details</Link>
-        <ReactStars
-          classNames={starRate}
-          value={value.vote_average / 2}
-          isHalf
-          edit={false}
-          count={5}
-          onChange={() => {}}
-          size={24}
-          activeColor="var(--white)"
+        <Rating
+          className={starRate}
+          average={value.vote_average}
         />
-        <span className={rating}>
-          {value.vote_average}
-          /10
-        </span>
       </div>
     </li>
   );

@@ -16,4 +16,6 @@ const MainDetail = (props) => {
   );
 };
 
+
+
 export default MainDetail;
