@@ -16,6 +16,6 @@ const MainDetail = (props) => {
   );
 };
 
-
+MainDetail.propTypes = PropTypes.string.isRequired;
 
 export default MainDetail;

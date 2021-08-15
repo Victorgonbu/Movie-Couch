@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Details from '../movie_show/Details';
 import { Carousel } from 'react-responsive-carousel';
 import { useLocation } from 'react-router-dom';
+import Details from '../movie_show/Details';
 import { movieURL, imagesURL } from '../../API';
 import axios from '../../axios';
 import {
