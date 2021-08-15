@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 import { fetchContent, fetchMoreContent } from '../../actions/index';
 import { list, home, noMatches } from '../../styles/Home.module.css';
-import Movie from '../Movie';
+import MovieThumb from '../MovieThumb';
 
 const Home = (props) => {
   const {
@@ -35,7 +35,7 @@ const Home = (props) => {
         <ul className={list}>
 
           {content
-           && content.map((item) => <Movie key={item.id} value={item} />)}
+           && content.map((item) => <MovieThumb key={item.id} value={item} />)}
         </ul>
       </InfiniteScroll>
       {content && content.length === 0 && <p className={noMatches}>No matches found</p>}

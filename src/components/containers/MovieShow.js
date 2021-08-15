@@ -13,7 +13,7 @@ import {
   producerList, producerItem, producerLogo, producerName, videoFrame,
   videosCarousel,
 } from '../../styles/Movie.module.css';
-import Backdrop from '../movie/Backdrop';
+import Backdrop from '../movie_show/Backdrop';
 import { flex } from '../../styles/App.module.css';
 import formatDate from '../utils/index';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader

@@ -7,7 +7,7 @@ import {
 import { imagesURL } from '../API';
 import formatDate from './utils/index';
 
-const Movie = (props) => {
+const MovieThumb = (props) => {
   const { value } = props;
 
   return (
@@ -36,7 +36,7 @@ const Movie = (props) => {
   );
 };
 
-Movie.propTypes = {
+MovieThumb.propTypes = {
   value: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
@@ -44,4 +44,4 @@ Movie.propTypes = {
     PropTypes.number])).isRequired,
 };
 
-export default Movie;
+export default MovieThumb;
