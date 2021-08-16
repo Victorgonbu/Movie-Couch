@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useLocation } from 'react-router-dom';
 import Details from '../movie_show/Details';
-import { movieURL, imagesURL } from '../../API';
+import Backdrop from '../movie_show/Backdrop';
+import Producers from '../movie_show/Producers';
+import { movieURL } from '../../API';
 import axios from '../../axios';
 import {
-  movieContainer, producerList, producerItem, producerLogo,
-  producerName, videoFrame, videosCarousel,
+  movieContainer, videoFrame, videosCarousel,
 } from '../../styles/Movie.module.css';
-import Backdrop from '../movie_show/Backdrop';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
 const MovieShow = () => {
@@ -24,17 +24,6 @@ const MovieShow = () => {
     }
     makeRequest();
   }, [url]);
-
-  const mapProducers = (list) => {
-    const filteredList = list.filter((producer) => producer.logo_path);
-
-    return filteredList.map((producer) => (
-      <p key={producer.name} className={producerItem}>
-        <img className={producerLogo} alt="Producer Logo" src={imagesURL + producer.logo_path} />
-        <span className={producerName}>{producer.name}</span>
-      </p>
-    ));
-  };
 
   const mapVideos = (list) => {
     const filteredVideos = list.filter((video) => video.official).slice(0, 8);
@@ -68,9 +57,7 @@ const MovieShow = () => {
                 {mapVideos(movie.videos.results)}
               </Carousel>
 
-              <div className={producerList}>
-                {mapProducers(movie.production_companies)}
-              </div>
+              <Producers list={movie.production_companies} />
 
             </>
             )}

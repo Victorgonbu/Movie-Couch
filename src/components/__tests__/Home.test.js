@@ -8,7 +8,7 @@ import '@testing-library/jest-dom/extend-expect';
 import Home from '../containers/Home';
 
 /* eslint-disable react/display-name */
-jest.mock('../Movie', () => () => <div data-testid="movie" />);
+jest.mock('../MovieThumb', () => () => <div data-testid="movie" />);
 
 const server = setupServer(
   rest.get('https://api.themoviedb.org/3/movie/popular', (req, res, ctx) => res(ctx.json({
