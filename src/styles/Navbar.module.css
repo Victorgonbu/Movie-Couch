@@ -27,8 +27,9 @@
 }
 
 .searchBox {
-  position: sticky;
+  position: fixed;
   top: calc(10vh - 1px);
+  left: 0;
   height: 0;
   opacity: 0;
   overflow: hidden;
@@ -40,6 +41,7 @@
   border: none;
   transition: 150ms ease-out;
   background-color: var(--black);
+  width: 100%;
 }
 
 .activeBox {

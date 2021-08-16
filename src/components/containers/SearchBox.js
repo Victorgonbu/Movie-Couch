@@ -2,8 +2,10 @@ import { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   searchBox, searchButton, searchBar, activeBox, closeSearchButton,
+  searchIcon,
 } from '../../styles/Navbar.module.css';
 import useDidMountEffect from '../../hooks/useDidMountEffect';
 import { fetchSearch, setSearchActive } from '../../actions/index';
@@ -36,22 +38,29 @@ const SearchBox = (props) => {
   };
 
   return (
-    <div ref={searchRef} className={searchBox}>
-      <button
-        type="button"
-        onClick={handleClose}
-        className={closeSearchButton}
-      >
-        &times;
+
+    <>
+      <button type="button" onClick={setSearchActive} className={searchIcon}>
+        <FontAwesomeIcon icon="search" />
       </button>
-      <input
-        placeholder="Type movie title"
-        className={searchBar}
-        onChange={handleInputChange}
-        value={inputValue}
-      />
-      <button onClick={handleSearch} type="button" className={searchButton}>Search</button>
-    </div>
+
+      <div data-testid="search" ref={searchRef} className={searchBox}>
+        <button
+          type="button"
+          onClick={handleClose}
+          className={closeSearchButton}
+        >
+          &times;
+        </button>
+        <input
+          placeholder="Type movie title"
+          className={searchBar}
+          onChange={handleInputChange}
+          value={inputValue}
+        />
+        <button onClick={handleSearch} type="button" className={searchButton}>Search</button>
+      </div>
+    </>
   );
 };
 
