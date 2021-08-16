@@ -15,6 +15,7 @@ jest.mock('react-router-dom/', () => ({
 
 jest.mock('../movie_show/Backdrop', () => () => <div data-testid="backdrop" />);
 jest.mock('../movie_show/Details', () => () => <div data-testid="details" />);
+jest.mock('../movie_show/Producers', () => () => <div data-testid="producers" />);
 jest.mock('react-responsive-carousel', () => ({
   Carousel: () => <div data-testid="carousel" />,
 }));
@@ -38,7 +39,8 @@ describe('MovieShow', () => {
   it("Fetch movie by id and render all it's relevant details", async () => {
     render(<MovieShow />);
     await waitFor(() => expect(screen.getByTestId('backdrop')).toBeInTheDocument());
-    expect(screen.getByTestId('details')).not.toBeInTheDocument();
+    expect(screen.getByTestId('details')).toBeInTheDocument();
     expect(screen.getByTestId('carousel')).toBeInTheDocument();
+    expect(screen.getByTestId('producers')).toBeInTheDocument();
   });
 });
