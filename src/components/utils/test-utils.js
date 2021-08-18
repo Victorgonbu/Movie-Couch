@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-
+// eslint-disable-next-line import/no-mutable-exports
 let reduxStore;
 
 function render(
