@@ -49,6 +49,7 @@ describe('Home', () => {
       render(<Home />, {
         filter: {
           content,
+          current: null,
         },
       });
       expect(screen.getByTestId('movie')).toBeInTheDocument();
@@ -58,6 +59,7 @@ describe('Home', () => {
       render(<Home />, {
         filter: {
           content: [],
+          current: null,
         },
       });
       expect(screen.queryByTestId('movie')).not.toBeInTheDocument();
