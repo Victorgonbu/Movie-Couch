@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Rating from './movie_show/Rating';
 import {
   listItem, poster, itemDetails, title, date, moreDetails, starRate,
-} from '../styles/Home.module.css';
-import { imagesURL } from '../API';
-import formatDate from './utils/index';
+} from '../../styles/Home.module.css';
+import { imagesURL } from '../../API';
+import formatDate from '../utils/index';
 
 const MovieThumb = (props) => {
   const { value } = props;

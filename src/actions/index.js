@@ -44,7 +44,6 @@ const fetchContent = (filter) => async (dispatch) => {
       ? `${movieURL + currentFilter}?` : `${discoverURL + currentFilter}&`;
     const request = await axios.get(url);
     const results = filterResults(request.data.results);
-    console.log(results);
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {

@@ -7,7 +7,7 @@ import { fetchGenresList, setCurrentFilter } from '../../actions';
 import {
   dropdownButton, active, activeFilter, dropdownMenu,
 } from '../../styles/Dropdown.module.css';
-import DropdownItem from '../DropdownItem';
+import DropdownItem from '../presentationals/DropdownItem';
 
 const DropdownMenu = (props) => {
   const {

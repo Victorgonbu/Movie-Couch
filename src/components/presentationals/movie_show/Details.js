@@ -6,9 +6,9 @@ import {
   detailsContainer, topDetails, topLeft,
   greenIcon, icon, ratingDetails, synopsis,
   synopsisTitle, synopsisText, watchDetails,
-} from '../../styles/Movie.module.css';
-import { flex } from '../../styles/App.module.css';
-import formatDate from '../utils/index';
+} from '../../../styles/Movie.module.css';
+import { flex } from '../../../styles/App.module.css';
+import formatDate from '../../utils/index';
 
 const Details = (props) => {
   const { movie } = props;

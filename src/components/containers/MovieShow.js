@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useLocation } from 'react-router-dom';
-import Details from '../movie_show/Details';
-import Backdrop from '../movie_show/Backdrop';
-import Producers from '../movie_show/Producers';
+import Details from '../presentationals/movie_show/Details';
+import Backdrop from '../presentationals/movie_show/Backdrop';
+import Producers from '../presentationals/movie_show/Producers';
 import { movieURL } from '../../API';
 import axios from '../../axios';
 import {

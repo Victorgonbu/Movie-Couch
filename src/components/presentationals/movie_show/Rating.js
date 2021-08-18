@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import ReactStars from 'react-rating-stars-component';
-import { votesDetails } from '../../styles/Movie.module.css';
+import { votesDetails } from '../../../styles/Movie.module.css';
 
 const Rating = (props) => {
   const { className, average, count } = props;

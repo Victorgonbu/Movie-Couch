@@ -4,12 +4,13 @@ import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 import { fetchContent, fetchMoreContent } from '../../actions/index';
 import { list, home, noMatches } from '../../styles/Home.module.css';
-import MovieThumb from '../MovieThumb';
+import MovieThumb from '../presentationals/MovieThumb';
 
 const Home = (props) => {
   const {
     currentFilter, fetchContent, content, fetchMoreContent, contentURL,
   } = props;
+
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(2);
   useEffect(() => {

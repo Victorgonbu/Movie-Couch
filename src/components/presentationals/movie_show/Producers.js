@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import {
   producerList, producerItem, producerLogo, producerName,
-} from '../../styles/Movie.module.css';
-import { imagesURL } from '../../API';
+} from '../../../styles/Movie.module.css';
+import { imagesURL } from '../../../API';
 
 const Producers = (props) => {
   const { list } = props;

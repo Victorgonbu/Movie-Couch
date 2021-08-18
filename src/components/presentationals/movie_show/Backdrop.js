@@ -5,9 +5,9 @@ import {
   backdropContainer, backdrop,
   movieTitle, movieTagline, movieHeader,
   genresList, genreSpan,
-} from '../../styles/Movie.module.css';
-import { backButton } from '../../styles/Navbar.module.css';
-import { backdropURL } from '../../API';
+} from '../../../styles/Movie.module.css';
+import { backButton } from '../../../styles/Navbar.module.css';
+import { backdropURL } from '../../../API';
 
 const Backdrop = (props) => {
   const {
