@@ -11,7 +11,7 @@ const MovieThumb = (props) => {
   const { value } = props;
 
   return (
-    <li data-testid="thumb" className={listItem}>
+    <li className={listItem}>
       <img className={poster} alt="poster" src={`${imagesURL}${value.poster_path}`} />
       <div className={itemDetails}>
         <p className={title}>{value.title}</p>

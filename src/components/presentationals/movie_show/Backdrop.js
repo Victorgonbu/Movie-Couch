@@ -23,6 +23,7 @@ const Backdrop = (props) => {
         src={`${backdropURL}${backdropPath}`}
       />
       <button
+        data-testid="back-arrow"
         type="button"
         className={backButton}
         onClick={() => navigate(-1)}
@@ -37,7 +38,6 @@ const Backdrop = (props) => {
         {genres.map((genre) => (
           <span key={genre.id} className={genreSpan}>
             {genre.name}
-            {' '}
           </span>
         ))}
       </p>
