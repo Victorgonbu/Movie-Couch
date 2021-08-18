@@ -40,7 +40,7 @@ const SearchBox = (props) => {
   return (
 
     <>
-      <button type="button" onClick={setSearchActive} className={searchIcon}>
+      <button data-testid="search-icon" type="button" onClick={setSearchActive} className={searchIcon}>
         <FontAwesomeIcon icon="search" />
       </button>
 
