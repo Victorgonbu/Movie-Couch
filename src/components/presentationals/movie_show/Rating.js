@@ -6,7 +6,7 @@ const Rating = (props) => {
   const { className, average, count } = props;
 
   return (
-    <div className={className}>
+    <div data-testid="rating" className={className}>
       <ReactStars
         classNames="stars"
         value={average / 2}
