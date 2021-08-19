@@ -51,8 +51,8 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 
 [Netlify deploy link](https://movie-couch.netlify.app)
 
-## Video Demo
-
+## Videos Demo
+https://gist.github.com/Shaqri/2a165ff7278f6776aa17f72443d407bd
 
 
 ## Getting Started
