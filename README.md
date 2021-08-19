@@ -45,6 +45,7 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 - Redux
 - prop-types
 - TMDB API
+- React testing library
 
 ## Live Demo
 
