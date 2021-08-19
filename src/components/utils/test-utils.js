@@ -1,5 +1,7 @@
 import React from 'react';
-import { render as rtlRender } from '@testing-library/react';
+import {
+  render as rtlRender, waitFor, screen, fireEvent,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -26,4 +28,6 @@ function render(
 // re-export everything
 export * from '@testing-library/react';
 // override render method
-export { render, reduxStore };
+export {
+  render, reduxStore, waitFor, screen, fireEvent,
+};
