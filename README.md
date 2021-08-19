@@ -6,7 +6,7 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 
 - HOME  
 
-<div style="text-align:center">
+<div style="width:100%;text-align:center">
   <img src="/src/imgs/sh/HOME.png" alt='Home screenshot' /> 
 </div>   
 
