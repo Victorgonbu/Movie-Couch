@@ -6,7 +6,7 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 
 - HOME  
 
-<div style="width:100%;text-align:center">
+<div style="display:flex;justify-content:center;">
   <img src="/src/imgs/sh/HOME.png" alt='Home screenshot' /> 
 </div>   
 
@@ -15,14 +15,14 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 - Filter   
 >> It counts with a dropdown menu filter to look for movies by genres, popularity and rating.  
 
-<div style="text-align:center">
+<div style="display:flex;justify-content:center;">
   <img src="/src/imgs/sh/FILTER.png" alt='Filter screenshot' /> 
 </div>
 
 - Search  
 >> It counts with a search box to look for the desired title.  
 
-<div style="text-align:center">
+<div style="display:flex;justify-content:center;">
   <img src="/src/imgs/sh/SEARCH.png" alt='Search screenshot' /> 
 </div>
 
@@ -30,7 +30,7 @@ React web app to search for movies using the [TMDB API](https://www.themoviedb.o
 
 >> Every movie listed counts with a 'More details' button to display all details about it.
 
-<div style="text-align:center">
+<div style="display:flex;justify-content:center;">
   <img src="/src/imgs/sh/MOVIE.png" alt='More details screenshot' /> 
 </div>
 
