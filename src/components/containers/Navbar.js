@@ -5,6 +5,7 @@ import {
 } from '../../styles/Navbar.module.css';
 import DropdownMenu from './DropdownMenu';
 import SearchBox from './SearchBox';
+import Error from '../presentationals/Error';
 
 const Navbar = () => (
   <>
@@ -15,9 +16,9 @@ const Navbar = () => (
       <div className={brand}>
         Movie Couch
       </div>
-
       <SearchBox />
     </nav>
+    <Error text="Sorry, it seems we are unable to reach the API. Please try again later." />
     <Outlet />
   </>
 );

@@ -12,6 +12,7 @@ const ADD_TO_CONTENT = 'ADD_TO_CONTENT';
 const SET_FILTER_REF = 'SET_FILTER_REF';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_DID_NAVIGATE = 'SET_DID_NAVIGATE';
+const SET_ERROR_STATE = 'SET_ERROR_STATE';
 
 const setGenresList = (list) => ({ type: SET_GENRES_LIST, payload: list });
 
@@ -27,6 +28,8 @@ const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page });
 
 const setDidNavigate = (bool) => ({ type: SET_DID_NAVIGATE, payload: bool });
 
+const setErrorState = (bool) => ({ type: SET_ERROR_STATE, payload: bool });
+
 const parameterize = (string) => {
   const stringCopy = string.slice();
   return stringCopy.trim().toLowerCase().replace(/\s/g, '_');
@@ -39,7 +42,7 @@ const fetchGenresList = async (dispatch, getState) => {
       dispatch(setGenresList(request.data.genres));
     }
   } catch (error) {
-    // TODO HANDLE ERROR WHEN UNABLE TO FETCH GENRES
+    dispatch(setErrorState(true));
   }
 };
 
@@ -53,7 +56,8 @@ const fetchContent = (filter) => async (dispatch) => {
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {
-    // TODO HANDLE ERROR WHEN UNABLE TO FETCH CONTENT
+    console.log('manolo');
+    dispatch(setErrorState(true));
   }
 };
 
@@ -67,7 +71,7 @@ const fetchMoreContent = (setHasMore) => async (dispatch, getState) => {
     dispatch(setCurrentPage(page + 1));
     dispatch(addToContent(results));
   } catch (error) {
-    // TODO HANDLE ERROR WHEN UNABLE TO FETCH MORE CONTENT
+    dispatch(setErrorState(true));
   }
 };
 
@@ -84,7 +88,7 @@ const fetchSearch = (query) => async (dispatch) => {
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {
-    // TODO HANDLE ERROR WHEN UNABLE TO FETCH SEARCH
+    dispatch(setErrorState(true));
   }
 };
 
@@ -101,4 +105,5 @@ export {
   setCurrentPage,
   setContent,
   setDidNavigate,
+  setErrorState,
 };

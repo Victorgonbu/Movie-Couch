@@ -4,6 +4,7 @@ const filterReducer = (state = {
   ref: null,
   currentPage: 2,
   didNavigate: false,
+  error: false,
 }, action) => {
   const { type, payload } = action;
 
@@ -24,6 +25,8 @@ const filterReducer = (state = {
       return { ...state, currentPage: payload };
     case 'SET_DID_NAVIGATE':
       return { ...state, didNavigate: payload };
+    case 'SET_ERROR_STATE':
+      return { ...state, error: payload };
     default:
       return state;
   }
