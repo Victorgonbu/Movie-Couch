@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useLocation } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Details from '../presentationals/movie_show/Details';
 import Backdrop from '../presentationals/movie_show/Backdrop';
 import Producers from '../presentationals/movie_show/Producers';
@@ -9,22 +11,28 @@ import axios from '../../axios';
 import {
   movieContainer, videoFrame, videosCarousel,
 } from '../../styles/Movie.module.css';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { setDidNavigate } from '../../actions/index';
 
-const MovieShow = () => {
+const MovieShow = (props) => {
+  const { didNavigate } = props;
   const location = useLocation();
   const movieID = location.pathname.split('/')[2];
   const url = `${movieURL + movieID}?append_to_response=videos`;
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    didNavigate(true);
+    const source = axios.CancelToken.source();
     async function makeRequest() {
-      const source = axios.CancelToken.source();
       const cancelToken = source.token;
       const request = await axios.get(url, { cancelToken });
       setMovie(request.data);
     }
     makeRequest();
+    return () => {
+      source.cancel();
+    };
   }, [url]);
 
   const mapVideos = (list) => {
@@ -67,4 +75,12 @@ const MovieShow = () => {
   );
 };
 
-export default MovieShow;
+MovieShow.propTypes = {
+  didNavigate: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  didNavigate: (bool) => { dispatch(setDidNavigate(bool)); },
+});
+
+export default connect(null, mapDispatchToProps)(MovieShow);

@@ -10,6 +10,8 @@ const SET_SEARCH_ACTIVE = 'SET_SEARCH_ACTIVE';
 const SET_CONTENT_URL = 'SET_CONTENT_URL';
 const ADD_TO_CONTENT = 'ADD_TO_CONTENT';
 const SET_FILTER_REF = 'SET_FILTER_REF';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_DID_NAVIGATE = 'SET_DID_NAVIGATE';
 
 const setGenresList = (list) => ({ type: SET_GENRES_LIST, payload: list });
 
@@ -20,6 +22,10 @@ const addToContent = (list) => ({ type: ADD_TO_CONTENT, payload: list });
 const setContentURL = (url) => ({ type: SET_CONTENT_URL, payload: url });
 
 const filterResults = (results) => results.filter((result) => result.poster_path);
+
+const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page });
+
+const setDidNavigate = (bool) => ({ type: SET_DID_NAVIGATE, payload: bool });
 
 const parameterize = (string) => {
   const stringCopy = string.slice();
@@ -51,13 +57,14 @@ const fetchContent = (filter) => async (dispatch) => {
   }
 };
 
-const fetchMoreContent = (page, setHasMore, setPage) => async (dispatch, getState) => {
+const fetchMoreContent = (setHasMore) => async (dispatch, getState) => {
   try {
+    const page = getState().filter.currentPage;
     const url = `${getState().filter.contentURL}page=${page}`;
     const request = await axios.get(url);
     const results = filterResults(request.data.results);
     if (page >= request.data.total_pages) setHasMore(false);
-    setPage((state) => state + 1);
+    dispatch(setCurrentPage(page + 1));
     dispatch(addToContent(results));
   } catch (error) {
     // TODO HANDLE ERROR WHEN UNABLE TO FETCH MORE CONTENT
@@ -91,4 +98,7 @@ export {
   fetchSearch,
   fetchMoreContent,
   setFilterRef,
+  setCurrentPage,
+  setContent,
+  setDidNavigate,
 };

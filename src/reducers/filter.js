@@ -1,4 +1,10 @@
-const filterReducer = (state = { current: 'Popular', searchActive: false, ref: null }, action) => {
+const filterReducer = (state = {
+  current: 'Popular',
+  searchActive: false,
+  ref: null,
+  currentPage: 2,
+  didNavigate: false,
+}, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -14,6 +20,10 @@ const filterReducer = (state = { current: 'Popular', searchActive: false, ref: n
       return { ...state, contentURL: payload };
     case 'SET_SEARCH_ACTIVE':
       return { ...state, searchActive: !state.searchActive };
+    case 'SET_CURRENT_PAGE':
+      return { ...state, currentPage: payload };
+    case 'SET_DID_NAVIGATE':
+      return { ...state, didNavigate: payload };
     default:
       return state;
   }

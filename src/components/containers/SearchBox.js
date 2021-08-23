@@ -8,12 +8,12 @@ import {
   searchIcon,
 } from '../../styles/Navbar.module.css';
 import useDidMountEffect from '../../hooks/useDidMountEffect';
-import { fetchSearch, setSearchActive } from '../../actions/index';
+import { fetchSearch, setSearchActive, setDidNavigate } from '../../actions/index';
 
 const SearchBox = (props) => {
   const {
     searchActive, fetchSearch, setSearchActive,
-    currentFilter,
+    contentURL, setDidNavigate,
   } = props;
   const searchRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
@@ -27,9 +27,13 @@ const SearchBox = (props) => {
     setInputValue(e.target.value);
   };
 
+  useDidMountEffect(() => {
+    navigate('/');
+  }, [contentURL]);
+
   const handleSearch = () => {
     fetchSearch(inputValue);
-    if (currentFilter === null) navigate('/');
+    setDidNavigate(false);
   };
 
   const handleClose = () => {
@@ -68,21 +72,23 @@ SearchBox.propTypes = {
   searchActive: PropTypes.bool.isRequired,
   fetchSearch: PropTypes.func.isRequired,
   setSearchActive: PropTypes.func.isRequired,
-  currentFilter: PropTypes.string,
+  contentURL: PropTypes.string,
+  setDidNavigate: PropTypes.func.isRequired,
 };
 
 SearchBox.defaultProps = {
-  currentFilter: null,
+  contentURL: null,
 };
 
 const mapStateToProps = (state) => ({
   searchActive: state.filter.searchActive,
-  currentFilter: state.filter.current,
+  contentURL: state.filter.contentURL,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchSearch: (query) => { dispatch(fetchSearch(query)); },
   setSearchActive: () => { dispatch(setSearchActive()); },
+  setDidNavigate: (bool) => { dispatch(setDidNavigate(bool)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
