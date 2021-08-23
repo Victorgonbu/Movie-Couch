@@ -3,9 +3,9 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
   render, waitFor, screen,
-} from '../utils/test-utils';
+} from '../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import MovieShow from '../containers/MovieShow';
+import MovieShow from '../components/containers/MovieShow';
 
 /* eslint-disable react/display-name */
 jest.mock('react-router-dom/', () => ({
@@ -13,9 +13,9 @@ jest.mock('react-router-dom/', () => ({
   useLocation: () => ({ pathname: '/movie/er5664e' }),
 }));
 
-jest.mock('../presentationals/movie_show/Backdrop', () => () => <div data-testid="backdrop" />);
-jest.mock('../presentationals/movie_show/Details', () => () => <div data-testid="details" />);
-jest.mock('../presentationals/movie_show/Producers', () => () => <div data-testid="producers" />);
+jest.mock('../components/presentationals/movie_show/Backdrop', () => () => <div data-testid="backdrop" />);
+jest.mock('../components/presentationals/movie_show/Details', () => () => <div data-testid="details" />);
+jest.mock('../components/presentationals/movie_show/Producers', () => () => <div data-testid="producers" />);
 jest.mock('react-responsive-carousel', () => ({
   Carousel: () => <div data-testid="carousel" />,
 }));

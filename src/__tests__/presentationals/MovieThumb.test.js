@@ -1,10 +1,10 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render } from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import MovieThumb from '../../presentationals/MovieThumb';
+import MovieThumb from '../../components/presentationals/MovieThumb';
 
 /* eslint-disable react/display-name */
-jest.mock('../../presentationals/movie_show/Rating.js', () => () => <div data-testid="rating" />);
+jest.mock('../../components/presentationals/movie_show/Rating.js', () => () => <div data-testid="rating" />);
 
 describe('MovieThumb', () => {
   const data = {

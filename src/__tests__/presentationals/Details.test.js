@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render } from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import Details from '../../presentationals/movie_show/Details';
+import Details from '../../components/presentationals/movie_show/Details';
 
 /* eslint-disable react/display-name */
-jest.mock('../../presentationals/movie_show/Rating.js', () => () => <div data-testid="rating" />);
-jest.mock('../../presentationals/movie_show/MainDetail.js', () => () => <div data-testid="main-detail" />);
+jest.mock('../../components/presentationals/movie_show/Rating.js', () => () => <div data-testid="rating" />);
+jest.mock('../../components/presentationals/movie_show/MainDetail.js', () => () => <div data-testid="main-detail" />);
 
 describe('Details', () => {
   it('render movie main details rating, synopsis and homepage', () => {

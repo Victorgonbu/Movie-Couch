@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render } from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import MainDetail from '../../presentationals/movie_show/MainDetail';
-import '../../utils/icons';
+import MainDetail from '../../components/presentationals/movie_show/MainDetail';
+import '../../components/utils/icons';
 /* eslint-disable react/display-name */
 jest.mock('@fortawesome/react-fontawesome', () => ({
   ...jest.requireActual('@fortawesome/react-fontawesome'),

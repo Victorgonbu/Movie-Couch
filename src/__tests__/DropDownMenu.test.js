@@ -3,14 +3,14 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
   render, fireEvent, waitFor, screen, reduxStore,
-} from '../utils/test-utils';
+} from '../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import DropdownMenu from '../containers/DropdownMenu';
+import DropdownMenu from '../components/containers/DropdownMenu';
 import { active } from '../../styles/DropdownMenu.module.css';
-import '../utils/icons';
+import '../components/utils/icons';
 
 /* eslint-disable react/display-name */
-jest.mock('../presentationals/DropdownItem', () => () => (
+jest.mock('../components/presentationals/DropdownItem', () => () => (
   <button
     type="button"
     data-testid="dropdown-item"

@@ -1,7 +1,7 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render } from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import Rating from '../../presentationals/movie_show/Rating';
+import Rating from '../../components/presentationals/movie_show/Rating';
 
 /* eslint-disable react/display-name */
 jest.mock('react-rating-stars-component', () => () => <div data-testid="rating-stars" />);

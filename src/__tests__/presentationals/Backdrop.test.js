@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, fireEvent, screen } from '../../utils/test-utils';
+import { render, fireEvent, screen } from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import Backdrop from '../../presentationals/movie_show/Backdrop';
-import '../../utils/icons';
+import Backdrop from '../../components/presentationals/movie_show/Backdrop';
+import '../../components/utils/icons';
 
 const mockNavigate = jest.fn();
 

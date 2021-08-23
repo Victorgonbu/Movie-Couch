@@ -3,13 +3,13 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
   render, waitFor, screen, reduxStore,
-} from '../utils/test-utils';
+} from '../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import { movieURL } from '../../API';
-import Home from '../containers/Home';
+import { movieURL } from '../API';
+import Home from '../components/containers/Home';
 
 /* eslint-disable react/display-name */
-jest.mock('../presentationals/MovieThumb', () => () => <div data-testid="movie" />);
+jest.mock('../components/presentationals/MovieThumb', () => () => <div data-testid="movie" />);
 
 const content = [
   {
@@ -40,9 +40,11 @@ describe('Home', () => {
         },
       });
       const actions = reduxStore.getActions();
-      await waitFor(() => expect(actions.length).toBe(2));
-      expect(actions[0]).toEqual({ type: 'SET_CONTENT_URL', payload: `${movieURL}popular?` });
-      expect(actions[1]).toEqual({ type: 'SET_CURRENT_CONTENT', payload: content });
+      await waitFor(() => expect(actions.length).toBe(4));
+      expect(actions[0]).toEqual({ type: 'SET_DID_NAVIGATE', payload: false });
+      expect(actions[1]).toEqual({ type: 'SET_CURRENT_PAGE', payload: 2 });
+      expect(actions[2]).toEqual({ type: 'SET_CONTENT_URL', payload: `${movieURL}popular?` });
+      expect(actions[3]).toEqual({ type: 'SET_CURRENT_CONTENT', payload: content });
     });
 
     it('render retrieved content passed as props using MovieThumb component', () => {

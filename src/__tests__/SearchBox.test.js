@@ -5,13 +5,13 @@ import {
   render, screen, fireEvent, waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import '../utils/icons';
+import '../components/utils/icons';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import SearchBox from '../containers/SearchBox';
-import { setSearchActive } from '../../actions/index';
+import SearchBox from '../components/containers/SearchBox';
+import { setSearchActive } from '../actions/index';
 
 const mockStore = configureStore([thunk]);
 
@@ -67,11 +67,12 @@ describe('SearchBox', () => {
     fireEvent.change(searchInput, { target: { value: 'f9' } });
     fireEvent.click(searchButton);
     const actions = store.getActions();
-    await waitFor(() => expect(actions.length).toBe(3));
-    expect(actions.length).toBe(3);
-    expect(actions[0]).toEqual({ type: 'SET_CURRENT_FILTER', payload: null });
-    expect(actions[1]).toEqual({ type: 'SET_CONTENT_URL', payload: '/search/movie?query=f9&' });
-    expect(actions[2]).toEqual({
+    await waitFor(() => expect(actions.length).toBe(4));
+    expect(actions.length).toBe(4);
+    expect(actions[0]).toEqual({ type: 'SET_DID_NAVIGATE', payload: false });
+    expect(actions[1]).toEqual({ type: 'SET_CURRENT_FILTER', payload: null });
+    expect(actions[2]).toEqual({ type: 'SET_CONTENT_URL', payload: '/search/movie?query=f9&' });
+    expect(actions[3]).toEqual({
       type: 'SET_CURRENT_CONTENT',
       payload: [{
         id: 1,

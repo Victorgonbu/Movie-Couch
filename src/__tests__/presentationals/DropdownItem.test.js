@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   render, fireEvent, screen,
-} from '../../utils/test-utils';
+} from '../../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
-import DropdownItem from '../../presentationals/DropdownItem';
+import DropdownItem from '../../components/presentationals/DropdownItem';
 
 const handleButtonClick = jest.fn();
 
