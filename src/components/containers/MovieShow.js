@@ -19,7 +19,9 @@ const MovieShow = () => {
 
   useEffect(() => {
     async function makeRequest() {
-      const request = await axios.get(url);
+      const source = axios.CancelToken.source();
+      const cancelToken = source.token;
+      const request = await axios.get(url, { cancelToken });
       setMovie(request.data);
     }
     makeRequest();
