@@ -10,7 +10,7 @@ import { active } from '../../styles/DropdownMenu.module.css';
 import '../utils/icons';
 
 /* eslint-disable react/display-name */
-jest.mock('../DropdownItem', () => () => (
+jest.mock('../presentationals/DropdownItem', () => () => (
   <button
     type="button"
     data-testid="dropdown-item"

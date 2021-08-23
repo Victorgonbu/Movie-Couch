@@ -9,7 +9,7 @@ import { movieURL } from '../../API';
 import Home from '../containers/Home';
 
 /* eslint-disable react/display-name */
-jest.mock('../MovieThumb', () => () => <div data-testid="movie" />);
+jest.mock('../presentationals/MovieThumb', () => () => <div data-testid="movie" />);
 
 const content = [
   {

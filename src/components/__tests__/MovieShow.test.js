@@ -13,9 +13,9 @@ jest.mock('react-router-dom/', () => ({
   useLocation: () => ({ pathname: '/movie/er5664e' }),
 }));
 
-jest.mock('../movie_show/Backdrop', () => () => <div data-testid="backdrop" />);
-jest.mock('../movie_show/Details', () => () => <div data-testid="details" />);
-jest.mock('../movie_show/Producers', () => () => <div data-testid="producers" />);
+jest.mock('../presentationals/movie_show/Backdrop', () => () => <div data-testid="backdrop" />);
+jest.mock('../presentationals/movie_show/Details', () => () => <div data-testid="details" />);
+jest.mock('../presentationals/movie_show/Producers', () => () => <div data-testid="producers" />);
 jest.mock('react-responsive-carousel', () => ({
   Carousel: () => <div data-testid="carousel" />,
 }));
