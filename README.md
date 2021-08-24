@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Movie Couch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React web app to search for movies using the [TMDB API](https://www.themoviedb.org)
 
-## Available Scripts
+## App screenshots  
 
-In the project directory, you can run:
+- HOME  
 
-### `yarn start`
+<div align="center">
+  <img src="/src/imgs/sh/HOME.png" alt='Home screenshot' /> 
+</div>   
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Filter   
+>> It counts with a dropdown menu filter to look for movies by genres, popularity and rating.  
 
-### `yarn test`
+<div align="center">
+  <img src="/src/imgs/sh/FILTER.png" alt='Filter screenshot' /> 
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Search  
+>> It counts with a search box to look for the desired title.  
 
-### `yarn build`
+<div align="center">
+  <img src="/src/imgs/sh/SEARCH.png" alt='Search screenshot' /> 
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- More details  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+>> Every movie listed counts with a 'More details' button to display all details about it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div align="center">
+  <img src="/src/imgs/sh/MOVIE.png" alt='More details screenshot' /> 
+</div>
 
-### `yarn eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Javascript
+- HTML
+- CSS
+- Node.js
+- React
+- React-DOM
+- Redux
+- prop-types
+- TMDB API
+- React testing library
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Live Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Netlify deploy link](https://movie-couch.netlify.app)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Videos Demo
+https://gist.github.com/Shaqri/2a165ff7278f6776aa17f72443d407bd
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To get a local copy up and running follow these simple example steps.
 
-### Code Splitting
+- Git clone https://github.com/Shaqri/Movie-Couch.git
+- Move to the root directory in your command line
+- run `yarn install` to install all dependencies
+- run `yarn start` to start the app in your localhost
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Test   
 
-### Analyzing the Bundle Size
+To run all available tests run `yarn test` in your terminal.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ENV variables  
 
-### Making a Progressive Web App
+To implement ENV variables follow the examples contained in the '.evn-example' file located in the root directory and after modifying the file rename it with '.env'.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Author
+👤 Victor Gonzalez  
+- Github: [@Shaqri](https://github.com/Shaqri)
+- Twitter: [@victorgonbu1](https://twitter.com/Victorgonbu1)
+- LinkedIn: [Victor Gonzalez](https://www.linkedin.com/in/victor-manuel-gonzalez-buitrago)
 
-### Advanced Configuration
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributions, issues and feature requests are welcome!
 
-### Deployment
+Feel free to check the [issues page](issues/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Show your support
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give a ⭐️ if you like this project!

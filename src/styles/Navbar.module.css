@@ -1,0 +1,83 @@
+
+.navbar {
+  border: none;
+  position: sticky;
+  top: -1px;
+  padding: 0 1em;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  height: 10vh;
+  color: var(--white);
+  background-color: var(--black);
+  z-index: 2;
+  font-family: 'Monoton', sans-serif;
+}
+
+.brand {
+  color: var(--red);
+  font-size: 1.4em;
+}
+
+.searchIcon {
+  font-size: 1.2em;
+  background-color: var(--black);
+  color: var(--white);
+  border: 1px solid var(--black);
+}
+
+.searchBox {
+  position: fixed;
+  top: calc(10vh - 1px);
+  left: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: right;
+  white-space: nowrap;
+  z-index: 1;
+  border: none;
+  transition: 150ms ease-out;
+  background-color: var(--black);
+  width: 100%;
+}
+
+.activeBox {
+  height: auto;
+  opacity: 1;
+  padding-bottom: 0.5em;
+}
+
+.searchBar {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.5em;
+  border: 1px solid var(--white);
+}
+
+.searchButton {
+  font-family: 'Manrope', sans-serif;
+  color: var(--white);
+  border: 1px solid var(--red);
+  border-left: none;
+  background-color: var(--black);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* stylelint-disable value-keyword-case */
+
+.backButton {
+  composes: dropdownButton from './Dropdown.module.css';
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  left: 0.5em;
+}
+
+.closeSearchButton {
+  composes: dropdownButton from './Dropdown.module.css';
+  font-size: 1.5em;
+}

@@ -1,0 +1,15 @@
+:root {
+  --white: #fff;
+  --black: #191919;
+  --red: #da0068;
+  --shadow: rgba(0, 0, 0, 0.8);
+  --green: #00b200;
+  --gray: #808080;
+}
+
+#root {
+  background-color: var(--black);
+  min-height: 100vh;
+  position: relative;
+  font-family: 'Manrope', sans-serif;
+}
