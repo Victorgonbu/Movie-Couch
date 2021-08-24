@@ -2,7 +2,7 @@ import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import {
-  render, waitFor, screen,
+  render, waitFor, screen, reduxStore,
 } from '../components/utils/test-utils';
 import '@testing-library/jest-dom/extend-expect';
 import MovieShow from '../components/containers/MovieShow';
@@ -42,5 +42,20 @@ describe('MovieShow', () => {
     expect(screen.getByTestId('details')).toBeInTheDocument();
     expect(screen.getByTestId('carousel')).toBeInTheDocument();
     expect(screen.getByTestId('producers')).toBeInTheDocument();
+  });
+
+  it('dispatch setNavigate action every time it gets mounted', async () => {
+    render(<MovieShow />);
+    const actions = reduxStore.getActions();
+    await waitFor(() => expect(actions.length).toBe(1));
+    expect(actions[0]).toEqual({ type: 'SET_DID_NAVIGATE', payload: true });
+  });
+
+  it('dispatch action to trigger change in error state and navigate to homepage to render error component', async () => {
+    server.use(rest.get('https://api.themoviedb.org/3/movie/er5664e', (req, res, ctx) => res(ctx.status(400))));
+    render(<MovieShow />);
+    const actions = reduxStore.getActions();
+    await waitFor(() => expect(actions.length).toBe(2));
+    expect(actions[1]).toEqual({ type: 'SET_ERROR_STATE', payload: true });
   });
 });
