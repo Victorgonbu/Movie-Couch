@@ -14,7 +14,6 @@ const Navbar = (props) => {
   const {
     errorActive, setErrorState, contentURL, currentFilter,
   } = props;
-  console.log(errorActive);
   return (
     <>
       <nav className={`${flex} ${navbar}`}>
