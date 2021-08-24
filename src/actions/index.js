@@ -56,7 +56,6 @@ const fetchContent = (filter) => async (dispatch) => {
     dispatch(setContentURL(url));
     dispatch(setContent(results));
   } catch (error) {
-    console.log('manolo');
     dispatch(setErrorState(true));
   }
 };

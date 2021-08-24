@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Details from '../presentationals/movie_show/Details';
@@ -12,11 +12,12 @@ import {
   movieContainer, videoFrame, videosCarousel,
 } from '../../styles/Movie.module.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { setDidNavigate } from '../../actions/index';
+import { setDidNavigate, setErrorState } from '../../actions/index';
 
 const MovieShow = (props) => {
-  const { didNavigate } = props;
+  const { didNavigate, setErrorState } = props;
   const location = useLocation();
+  const navigate = useNavigate();
   const movieID = location.pathname.split('/')[2];
   const url = `${movieURL + movieID}?append_to_response=videos`;
   const [movie, setMovie] = useState(null);
@@ -25,9 +26,14 @@ const MovieShow = (props) => {
     didNavigate(true);
     const source = axios.CancelToken.source();
     async function makeRequest() {
-      const cancelToken = source.token;
-      const request = await axios.get(url, { cancelToken });
-      setMovie(request.data);
+      try {
+        const cancelToken = source.token;
+        const request = await axios.get(url, { cancelToken });
+        setMovie(request.data);
+      } catch {
+        setErrorState(true);
+        navigate('/');
+      }
     }
     makeRequest();
     return () => {
@@ -77,10 +83,12 @@ const MovieShow = (props) => {
 
 MovieShow.propTypes = {
   didNavigate: PropTypes.func.isRequired,
+  setErrorState: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   didNavigate: (bool) => { dispatch(setDidNavigate(bool)); },
+  setErrorState: (bool) => { dispatch(setErrorState(bool)); },
 });
 
 export default connect(null, mapDispatchToProps)(MovieShow);
