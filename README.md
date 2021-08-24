@@ -64,6 +64,13 @@ To get a local copy up and running follow these simple example steps.
 - run `yarn install` to install all dependencies
 - run `yarn start` to start the app in your localhost
 
+## Test   
+
+To run all available tests run `yarn test` in your terminal.  
+
+## ENV variables  
+
+To implement ENV variables follow the examples contained in the '.evn-example' file located in the root directory and after modifying the file rename it with '.env'.  
 
 ## Author
 👤 Victor Gonzalez  
